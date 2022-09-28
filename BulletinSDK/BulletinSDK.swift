@@ -23,15 +23,42 @@ class BulletinSDK   {
     
     
     // MARK: - Helper Methods
-    func showFullBulletin() {
+    public func showFullBulletin() -> Bool {
         
+        // Get Bulletin Items
+        let items = dataStore.getData(fromNewVersion: nil, toOldVersion: nil)
+        
+        // Show Bulletin
+        return showBulletin(items: items)
     }
     
-    func showBulletinFromLastVersion(limit: Int? = nil) {
-
+    public func showLastBulletins(limit: Int = 1) -> Bool {
+        
+        // Get Bulletin Items
+        let items = dataStore.getData(fromNewVersion: nil, toOldVersion: nil, limit: limit)
+        
+        // Show Bulletin
+        return showBulletin(items: items)
     }
     
-    func showBulletin(fromVersion version: String, limit: Int? = nil)   {
-        dataStore.getData(fromVersion: version)
+    public func showUnseenBulletins(limit: Int? = nil) -> Bool {
+        
+        // Get Last Seen Version
+        guard let lastSeenVersion = UserDefaults.lastSeenVersion else { return false }
+        
+        // Get Bulletin Items
+        let items = dataStore.getData(fromNewVersion: lastSeenVersion, toOldVersion: nil, limit: limit)
+        
+        // Show Bulletin
+        return showBulletin(items: items)
+    }
+    
+    private func showBulletin(items: [BulletinInfo]?) -> Bool {
+        
+        // Validation
+        guard let items = items,
+              items.isEmpty == false else { return false }
+        
+        return false
     }
 }

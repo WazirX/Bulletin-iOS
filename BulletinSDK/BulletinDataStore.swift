@@ -7,13 +7,11 @@
 
 import Foundation
 
-typealias Version = String
-
 class BulletinDataStore {
     
     
     // MARK: - Variable
-    public private(set) var data = [Version: [BulletinItem]]()
+    public private(set) var data = [BulletinInfo]()
     
     
     // MARK: - Initialisation Methods
@@ -37,22 +35,41 @@ class BulletinDataStore {
     }
     
     public func registerVersionInfo(version: Version, items: [BulletinItem])   {
-        if items.isEmpty == false   {
-            self.data[version] = items
+        
+        // Validation
+        guard items.isEmpty == false else { return }
+        
+        // Create Bulletin Info Object
+        let bulletinInfo = BulletinInfo(version: version, items: items)
+        
+        for (i,item) in data.enumerated()    {
+            
+            // Check If Same Version Available In Data
+            if item.version == version  {
+                
+                // Remove Value
+                data.remove(at: i)
+                
+                // Add New Value
+                data.append(bulletinInfo)
+                return
+            }
         }
+        
+        data.append(bulletinInfo)
     }
     
-    public func getData(fromVersion version: Version, limit: Int? = nil)  {
+    public func getData(fromNewVersion newVersion: Version?, toOldVersion oldVersion: Version?, limit: Int? = nil) -> [BulletinInfo]? {
         
-//        for appVersion in self.data    {
-//            if appVersion.key == version  {
-//                let bulletinItem = self.data[version]
-//                for item in bulletinItem  {
-//                    print("✅\(item.text)")
-//                }
-//            }
-//        }
+        // Sort Bulletin Info
+        let sorttedItems = data.sorted(by: { $0.version > $1.version })
         
+        // Validation For Limit
+        guard let limit = limit else {
+            return sorttedItems
+        }
+        
+        return nil
     }
     
 }

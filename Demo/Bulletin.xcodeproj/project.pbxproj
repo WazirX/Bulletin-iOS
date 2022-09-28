@@ -23,6 +23,10 @@
 		815E3DB928DC884C0042CEA5 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E3DAF28DC884C0042CEA5 /* Media.swift */; };
 		815E3DBA28DC884C0042CEA5 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E3DB028DC884C0042CEA5 /* ActionButton.swift */; };
 		815E3DBB28DC884C0042CEA5 /* BulletinSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E3DB128DC884C0042CEA5 /* BulletinSDK.swift */; };
+		819772DC28E2CBEF00962913 /* BulletinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819772DB28E2CBEF00962913 /* BulletinInfo.swift */; };
+		819772DE28E40B8100962913 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819772DD28E40B8100962913 /* Version.swift */; };
+		819772E028E40C4800962913 /* String+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819772DF28E40C4800962913 /* String+Version.swift */; };
+		81E010E228DDA2D9003FFE79 /* UserDefaults+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E010E128DDA2D9003FFE79 /* UserDefaults+Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		815E3DAF28DC884C0042CEA5 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		815E3DB028DC884C0042CEA5 /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		815E3DB128DC884C0042CEA5 /* BulletinSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinSDK.swift; sourceTree = "<group>"; };
+		819772DB28E2CBEF00962913 /* BulletinInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinInfo.swift; sourceTree = "<group>"; };
+		819772DD28E40B8100962913 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		819772DF28E40C4800962913 /* String+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Version.swift"; sourceTree = "<group>"; };
+		81E010E128DDA2D9003FFE79 /* UserDefaults+Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Storage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,24 +99,26 @@
 		815E3DA528DC884C0042CEA5 /* BulletinSDK */ = {
 			isa = PBXGroup;
 			children = (
-				815E3DA928DC884C0042CEA5 /* Modal */,
-				815E3DA628DC884C0042CEA5 /* Extension */,
-				815E3DA828DC884C0042CEA5 /* BulletinDataStore.swift */,
+				815E3DA928DC884C0042CEA5 /* Modals */,
+				815E3DA628DC884C0042CEA5 /* Extensions */,
 				815E3DB128DC884C0042CEA5 /* BulletinSDK.swift */,
+				815E3DA828DC884C0042CEA5 /* BulletinDataStore.swift */,
 			);
 			name = BulletinSDK;
 			path = ../BulletinSDK;
 			sourceTree = "<group>";
 		};
-		815E3DA628DC884C0042CEA5 /* Extension */ = {
+		815E3DA628DC884C0042CEA5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				815E3DA728DC884C0042CEA5 /* String+Class.swift */,
+				81E010E128DDA2D9003FFE79 /* UserDefaults+Storage.swift */,
+				819772DF28E40C4800962913 /* String+Version.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
-		815E3DA928DC884C0042CEA5 /* Modal */ = {
+		815E3DA928DC884C0042CEA5 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
 				815E3DAA28DC884C0042CEA5 /* BulletinItem.swift */,
@@ -118,8 +128,10 @@
 				815E3DAE28DC884C0042CEA5 /* Title.swift */,
 				815E3DAF28DC884C0042CEA5 /* Media.swift */,
 				815E3DB028DC884C0042CEA5 /* ActionButton.swift */,
+				819772DB28E2CBEF00962913 /* BulletinInfo.swift */,
+				819772DD28E40B8100962913 /* Version.swift */,
 			);
-			path = Modal;
+			path = Modals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +161,10 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = "";
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
+				ORGANIZATIONNAME = "Copyright © 2022 Zanmai Labs Private Limited.";
 				TargetAttributes = {
 					815E3D7428DC85510042CEA5 = {
 						CreatedOnToolsVersion = 14.0;
@@ -197,11 +211,15 @@
 				815E3DB828DC884C0042CEA5 /* Title.swift in Sources */,
 				815E3D7D28DC85510042CEA5 /* ViewController.swift in Sources */,
 				815E3DB428DC884C0042CEA5 /* BulletinItem.swift in Sources */,
+				81E010E228DDA2D9003FFE79 /* UserDefaults+Storage.swift in Sources */,
 				815E3DB328DC884C0042CEA5 /* BulletinDataStore.swift in Sources */,
 				815E3DBB28DC884C0042CEA5 /* BulletinSDK.swift in Sources */,
+				819772DE28E40B8100962913 /* Version.swift in Sources */,
 				815E3DB228DC884C0042CEA5 /* String+Class.swift in Sources */,
 				815E3DB528DC884C0042CEA5 /* PreTitle.swift in Sources */,
+				819772E028E40C4800962913 /* String+Version.swift in Sources */,
 				815E3DB728DC884C0042CEA5 /* BulletPoint.swift in Sources */,
+				819772DC28E2CBEF00962913 /* BulletinInfo.swift in Sources */,
 				815E3DB628DC884C0042CEA5 /* Message.swift in Sources */,
 				815E3D7928DC85510042CEA5 /* AppDelegate.swift in Sources */,
 				815E3D7B28DC85510042CEA5 /* SceneDelegate.swift in Sources */,
