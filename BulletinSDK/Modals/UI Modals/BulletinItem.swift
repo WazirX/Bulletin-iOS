@@ -13,7 +13,6 @@ class BulletinItem  {
     // MARK: - Declarations
     public enum ItemType : String {
         case undefined
-        case preTitle
         case title
         case message
         case media

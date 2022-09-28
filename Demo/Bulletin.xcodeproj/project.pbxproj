@@ -16,7 +16,6 @@
 		815E3DB228DC884C0042CEA5 /* String+Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E3DA728DC884C0042CEA5 /* String+Class.swift */; };
 		815E3DB328DC884C0042CEA5 /* BulletinDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E3DA828DC884C0042CEA5 /* BulletinDataStore.swift */; };
 		815E3DB428DC884C0042CEA5 /* BulletinItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E3DAA28DC884C0042CEA5 /* BulletinItem.swift */; };
-		815E3DB528DC884C0042CEA5 /* PreTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E3DAB28DC884C0042CEA5 /* PreTitle.swift */; };
 		815E3DB628DC884C0042CEA5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E3DAC28DC884C0042CEA5 /* Message.swift */; };
 		815E3DB728DC884C0042CEA5 /* BulletPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E3DAD28DC884C0042CEA5 /* BulletPoint.swift */; };
 		815E3DB828DC884C0042CEA5 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E3DAE28DC884C0042CEA5 /* Title.swift */; };
@@ -41,7 +40,6 @@
 		815E3DA728DC884C0042CEA5 /* String+Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Class.swift"; sourceTree = "<group>"; };
 		815E3DA828DC884C0042CEA5 /* BulletinDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinDataStore.swift; sourceTree = "<group>"; };
 		815E3DAA28DC884C0042CEA5 /* BulletinItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinItem.swift; sourceTree = "<group>"; };
-		815E3DAB28DC884C0042CEA5 /* PreTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreTitle.swift; sourceTree = "<group>"; };
 		815E3DAC28DC884C0042CEA5 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		815E3DAD28DC884C0042CEA5 /* BulletPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletPoint.swift; sourceTree = "<group>"; };
 		815E3DAE28DC884C0042CEA5 /* Title.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
@@ -121,17 +119,24 @@
 		815E3DA928DC884C0042CEA5 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
-				815E3DAA28DC884C0042CEA5 /* BulletinItem.swift */,
-				815E3DAB28DC884C0042CEA5 /* PreTitle.swift */,
-				815E3DAC28DC884C0042CEA5 /* Message.swift */,
-				815E3DAD28DC884C0042CEA5 /* BulletPoint.swift */,
-				815E3DAE28DC884C0042CEA5 /* Title.swift */,
-				815E3DAF28DC884C0042CEA5 /* Media.swift */,
-				815E3DB028DC884C0042CEA5 /* ActionButton.swift */,
+				819772E128E41D8200962913 /* UI Modals */,
 				819772DB28E2CBEF00962913 /* BulletinInfo.swift */,
 				819772DD28E40B8100962913 /* Version.swift */,
 			);
 			path = Modals;
+			sourceTree = "<group>";
+		};
+		819772E128E41D8200962913 /* UI Modals */ = {
+			isa = PBXGroup;
+			children = (
+				815E3DAA28DC884C0042CEA5 /* BulletinItem.swift */,
+				815E3DAE28DC884C0042CEA5 /* Title.swift */,
+				815E3DAC28DC884C0042CEA5 /* Message.swift */,
+				815E3DAD28DC884C0042CEA5 /* BulletPoint.swift */,
+				815E3DAF28DC884C0042CEA5 /* Media.swift */,
+				815E3DB028DC884C0042CEA5 /* ActionButton.swift */,
+			);
+			path = "UI Modals";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,7 +221,6 @@
 				815E3DBB28DC884C0042CEA5 /* BulletinSDK.swift in Sources */,
 				819772DE28E40B8100962913 /* Version.swift in Sources */,
 				815E3DB228DC884C0042CEA5 /* String+Class.swift in Sources */,
-				815E3DB528DC884C0042CEA5 /* PreTitle.swift in Sources */,
 				819772E028E40C4800962913 /* String+Version.swift in Sources */,
 				815E3DB728DC884C0042CEA5 /* BulletPoint.swift in Sources */,
 				819772DC28E2CBEF00962913 /* BulletinInfo.swift in Sources */,
