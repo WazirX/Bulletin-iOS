@@ -62,14 +62,26 @@ class BulletinDataStore {
     public func getData(fromNewVersion newVersion: Version?, toOldVersion oldVersion: Version?, limit: Int? = nil) -> [BulletinInfo]? {
         
         // Sort Bulletin Info
-        let sorttedItems = data.sorted(by: { $0.version > $1.version })
+        let sortedInfos = data.sorted(by: { $0.version > $1.version })
         
-        // Validation For Limit
-        guard let limit = limit else {
-            return sorttedItems
+        var filteredInfos = [BulletinInfo]()
+        for info in sortedInfos  {
+            
+            // Add Info Only When Conditions Are True
+            if let newVersion = newVersion, info.version <= newVersion {
+                filteredInfos.append(info)
+            } else if let oldVersion = oldVersion, info.version >= oldVersion {
+                filteredInfos.append(info)
+            } else {
+                filteredInfos.append(info)
+            }
+
+            // Validation For Limit
+            if let limit = limit, filteredInfos.count >= limit {
+                return filteredInfos
+            }
         }
-        
-        return nil
+
+        return filteredInfos
     }
-    
 }
