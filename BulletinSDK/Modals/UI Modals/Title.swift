@@ -12,8 +12,11 @@ class Title: BulletinItem {
     
     // MARK: - Variable
     var preTitleText: String?
+    public var preTitleTextColor: UIColor?
     var titleText: String?
+    public var titleTextColor: UIColor?
     var subTitleText: String?
+    public var subTitleTextColor: UIColor?
 
     
     // MARK: - Initialisation Methods
@@ -30,12 +33,17 @@ class Title: BulletinItem {
         // Set Pre Title
         preTitleText = attributes["preTitleText"] as? String
         
+        // Set Pre Title Color
+        if let preTitleTextColor = attributes["preTitleTextColor"] as? String {
+            self.preTitleTextColor = preTitleTextColor
+        }
+        
         // Set Title
         titleText = attributes["titleText"] as? String
         
         // Set Sub Title
         subTitleText = attributes["subTitleText"] as? String
-        
+                
         // Validations
         if preTitleText == nil && titleText == nil && subTitleText == nil {
             return nil
