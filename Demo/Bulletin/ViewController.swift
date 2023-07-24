@@ -24,11 +24,32 @@ class ViewController: UIViewController {
         registerBulletingDetails(forVersion: Version("1.13")!, inDataStore: dataSource)
         registerBulletingDetails(forVersion: Version("1.13.1")!, inDataStore: dataSource)
         registerBulletingDetails(forVersion: Version("1.14")!, inDataStore: dataSource)
+    
 
         let sdk = BulletinSDK(dataStore: dataSource)
-        let _ = sdk.showFullBulletin()
-        let _ = sdk.showLastBulletins(limit: 5)
-        let _ = sdk.showUnseenBulletins(limit: 4)
+        let bulletinView = sdk.getFullBulletin()
+        let _ = sdk.getLastBulletins(limit: 5)
+        let _ = sdk.getUnseenBulletins(limit: 4)
+        
+        if let bulletinView = bulletinView {
+            bulletinView.backgroundColor = UIColor.red
+            self.view.addSubview(bulletinView)
+        }
+        
+        // Get Top Most View Controller
+//        BulletinHelper.topMostViewController { (topMostVC) in
+//
+//            // Validation
+//            guard let topMostVC = topMostVC else {
+//                return
+//            }
+//
+//            // Display Self Declaration PopUp VC
+//            let segue = AlertSegue(identifier: nil, source: topMostVC, destination: bulletinView)
+//            topMostVC.prepare(for: segue, sender: nil)
+//            segue.perform()
+//
+//        }
     }
 
     private func registerBulletingDetails(forVersion version: Version, inDataStore dataStore: BulletinDataStore)   {

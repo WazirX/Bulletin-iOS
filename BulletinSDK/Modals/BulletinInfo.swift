@@ -6,10 +6,9 @@
 //  Copyright © 2022 Copyright © 2022 Zanmai Labs Private Limited. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-
-class BulletinInfo  {
+class BulletinInfo {
     
     
     // MARK: - Variables
@@ -27,3 +26,4 @@ class BulletinInfo  {
         self.items = items
     }
 }
+

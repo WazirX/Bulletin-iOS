@@ -21,5 +21,14 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+    <array>
+        <string>IBMPlexSans-Bold.ttf</string>
+        <string>IBMPlexSans-BoldItalic.ttf</string>
+        <string>IBMPlexSans-Medium.ttf</string>
+        <string>IBMPlexSans-Regular.ttf</string>
+        <string>IBMPlexSans-SemiBold.ttf</string>
+        <string>IBMPlexSans-SemiBoldItalic.ttf</string>
+    </array>
 </dict>
 </plist>

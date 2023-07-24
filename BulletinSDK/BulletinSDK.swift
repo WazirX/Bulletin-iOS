@@ -23,42 +23,47 @@ class BulletinSDK   {
     
     
     // MARK: - Helper Methods
-    public func showFullBulletin() -> Bool {
+    public func getFullBulletin() -> BulletinListView? {
         
         // Get Bulletin Items
         let items = dataStore.getData(fromNewVersion: nil, toOldVersion: nil)
         
         // Show Bulletin
-        return showBulletin(items: items)
+        return getBulletin(items: items)
     }
     
-    public func showLastBulletins(limit: Int = 1) -> Bool {
+    public func getLastBulletins(limit: Int = 1) -> BulletinListView? {
         
         // Get Bulletin Items
         let items = dataStore.getData(fromNewVersion: nil, toOldVersion: nil, limit: limit)
         
         // Show Bulletin
-        return showBulletin(items: items)
+        return getBulletin(items: items)
     }
     
-    public func showUnseenBulletins(limit: Int? = nil) -> Bool {
+    public func getUnseenBulletins(limit: Int? = nil) -> BulletinListView? {
         
         // Get Last Seen Version
-        guard let lastSeenVersion = UserDefaults.lastSeenVersion else { return false }
+        guard let lastSeenVersion = UserDefaults.lastSeenVersion else { return nil }
         
         // Get Bulletin Items
         let items = dataStore.getData(fromNewVersion: lastSeenVersion, toOldVersion: nil, limit: limit)
         
         // Show Bulletin
-        return showBulletin(items: items)
+        return getBulletin(items: items)
     }
     
-    private func showBulletin(items: [BulletinInfo]?) -> Bool {
+    private func getBulletin(items: [BulletinInfo]?) -> BulletinListView? {
         
         // Validation
         guard let items = items,
-              items.isEmpty == false else { return false }
+              items.isEmpty == false else { return nil }
         
-        return false
+        let bulletinSection = BulletinSection()
+        bulletinSection.bulletinInfo = items
+        
+        let bulletinView = BulletinListView.instance(bulletinSection: bulletinSection)
+        
+        return bulletinView
     }
 }

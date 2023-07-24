@@ -12,11 +12,11 @@ class Title: BulletinItem {
     
     // MARK: - Variable
     var preTitleText: String?
-    public var preTitleTextColor: UIColor?
+    public var preTitleTextColor: String?
     var titleText: String?
-    public var titleTextColor: UIColor?
+    public var titleTextColor: String?
     var subTitleText: String?
-    public var subTitleTextColor: UIColor?
+    public var subTitleTextColor: String?
 
     
     // MARK: - Initialisation Methods

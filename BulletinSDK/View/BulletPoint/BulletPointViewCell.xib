@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BulletPointViewCell" customModule="Bulletin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="379" height="199"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="379" height="199"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zh6-7g-m8b">
+                        <rect key="frame" x="0.0" y="59" width="379" height="106"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Abt-hH-d7f">
+                                <rect key="frame" x="0.0" y="0.0" width="379" height="106"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QVr-9O-nX4" customClass="WZBaseView" customModule="Bulletin" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="16" width="24" height="24"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOT-iy-SaV">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m8b-RG-dsJ" customClass="WZBaseImageView" customModule="Bulletin" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="TYv-2q-1Hm"/>
+                                                    <constraint firstAttribute="width" constant="24" id="r77-wz-LQD"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="jOT-iy-SaV" secondAttribute="bottom" id="4aA-Pz-UtY"/>
+                                            <constraint firstItem="m8b-RG-dsJ" firstAttribute="leading" secondItem="QVr-9O-nX4" secondAttribute="leading" id="CIy-Cq-Fus"/>
+                                            <constraint firstItem="m8b-RG-dsJ" firstAttribute="top" secondItem="QVr-9O-nX4" secondAttribute="top" id="CRs-PE-m5L"/>
+                                            <constraint firstAttribute="bottom" secondItem="m8b-RG-dsJ" secondAttribute="bottom" id="DCc-jp-1bs"/>
+                                            <constraint firstAttribute="height" constant="24" id="Fy8-4t-Wrn"/>
+                                            <constraint firstAttribute="trailing" secondItem="jOT-iy-SaV" secondAttribute="trailing" id="HDf-4T-Sar"/>
+                                            <constraint firstAttribute="width" constant="24" id="KHz-e8-YZu"/>
+                                            <constraint firstItem="jOT-iy-SaV" firstAttribute="leading" secondItem="QVr-9O-nX4" secondAttribute="leading" id="aOG-1P-ulZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="m8b-RG-dsJ" secondAttribute="trailing" id="xji-6S-6gk"/>
+                                            <constraint firstItem="jOT-iy-SaV" firstAttribute="top" secondItem="QVr-9O-nX4" secondAttribute="top" id="yxZ-j1-ALP"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5we-bG-KJc">
+                                        <rect key="frame" x="48" y="15.999999999999996" width="315" height="37.666666666666657"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Verify your KYC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sg6-Gk-Srf">
+                                                <rect key="frame" x="8.0000000000000071" y="0.0" width="118.66666666666669" height="19.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Deposit, withdraw &amp; trade INR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYd-TI-hF7">
+                                                <rect key="frame" x="8" y="23.333333333333329" width="177.66666666666666" height="14.333333333333336"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
+                                    </stackView>
+                                </subviews>
+                                <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="zh6-7g-m8b" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="0SI-aO-Cwj"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="zh6-7g-m8b" secondAttribute="top" id="pwN-JY-b6V"/>
+                <constraint firstItem="zh6-7g-m8b" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" id="qQg-9V-X1n"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="zh6-7g-m8b" secondAttribute="trailing" id="sJh-XY-54f"/>
+            </constraints>
+            <size key="customSize" width="379" height="99"/>
+            <connections>
+                <outlet property="bulletDesc" destination="fYd-TI-hF7" id="pob-kS-0wG"/>
+                <outlet property="bulletImageView" destination="m8b-RG-dsJ" id="nbG-lP-VbW"/>
+                <outlet property="bulletName" destination="jOT-iy-SaV" id="xs3-YO-vnR"/>
+                <outlet property="bulletTitle" destination="Sg6-Gk-Srf" id="niG-Jk-wer"/>
+            </connections>
+            <point key="canvasLocation" x="238.93129770992365" y="38.380281690140848"/>
+        </collectionViewCell>
+    </objects>
+</document>
