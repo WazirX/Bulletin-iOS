@@ -24,59 +24,13 @@ class BulletPointViewCell: BaseCollectionViewCell {
     
     public var item: BulletPoint? {
         didSet {
-            
-            // Validation
-            guard let bulletPointItem = item else {
-                
-                // Reset To Nil
-                bulletTitle = nil
-                bulletDesc = nil
-                bulletImageView = nil
-                bulletName = nil
-                
-                return
-            }
-            
-            switch (bulletPointItem.bullet?.bulletType) {
-                
-            case .unicode:
-                
-                let htmlAttributedString = bulletPointItem.bullet?.unicode?.html2AttributedString(usingFont: AppStyle.Font.SemiBold(size: 14.0), color: AppStyle.Color.SecondaryText)?.trailingNewlineChopped
-                
-                if let attributedMessage = htmlAttributedString {
-                    
-                    // Set Description Message
-                    bulletTitle.attributedText = attributedMessage
-                }
-                
-            case .image:
-               
-                // Set downloaded Image Icon
-                if let iconUrl = bulletPointItem.bullet?.imageUrl {
-                    bulletImageView.kf.setImage(with: iconUrl) { [weak self] (result) in
-                        switch result {
-                        case .success(let value):
-                            
-                            // Image downloaded
-                            if let sourceUrl = value.source.url,
-                               sourceUrl == iconUrl {
-                                self?.bulletImageView.image = value.image
-                            }
-                        case .failure(let error):
-                            print("\(error.localizedDescription)")
-                        }
-                    }
-                }
-                
-            case .none:
-                bulletTitle.isHidden = true
-                bulletDesc.isHidden = true
-            }
-            
-            bulletTitle.text = bulletPointItem.titleText
-            bulletDesc.text = bulletPointItem.subTitleText
-            
+           updateUI()
         }
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let size = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return CGSize(width: UIView.noIntrinsicMetric, height: size.height)
     }
 
     override func awakeFromNib() {
@@ -88,18 +42,83 @@ class BulletPointViewCell: BaseCollectionViewCell {
         super.updateAppearance()
         
         // Set Background Color
-        backgroundColor = AppStyle.Color.Background
+        backgroundColor = AppStyle.Color.MainBgSurface_Alt
        
     
         // Set preTitle Label
-        bulletTitle.small_medium()
-        bulletTitle.textColor = AppStyle.Color.SuccessTextPrimary
+        bulletTitle.large_semibold()
+        bulletTitle.textColor = AppStyle.Color.MainTextPrimary
         
         // Set Title Label
-        bulletDesc.heading4_semibold()
-        bulletDesc.textColor = AppStyle.Color.MainTextPrimary
+        bulletDesc.base_regular()
+        bulletDesc.textColor = AppStyle.Color.MainTextSecondary
         
-        bulletName.heading4_semibold()
+      //  bulletName.heading4_semibold()
+    }
+    
+    private func updateUI() {
+        
+        // Validation
+        guard let bulletPointItem = item else {
+            
+            // Reset To Nil
+            bulletTitle = nil
+            bulletDesc = nil
+            bulletImageView = nil
+            bulletName = nil
+            
+            return
+        }
+        
+        switch (bulletPointItem.bullet?.bulletType) {
+            
+        case .unicode:
+            
+            if let test = bulletPointItem.bullet?.unicode?.unicodeString {
+                bulletName.text = test
+            }
+            
+        case .image:
+           
+            // Set downloaded Image Icon
+            if let iconUrl = bulletPointItem.bullet?.imageUrl {
+                bulletImageView.kf.setImage(with: iconUrl) { [weak self] (result) in
+                    switch result {
+                    case .success(let value):
+                        
+                        // Image downloaded
+                        if let sourceUrl = value.source.url,
+                           sourceUrl == iconUrl {
+                            self?.bulletImageView.image = value.image
+                        }
+                    case .failure(let error):
+                        print("\(error.localizedDescription)")
+                    }
+                }
+            }
+            
+        case .none:
+            bulletTitle.isHidden = false
+           // bulletDesc.isHidden = true
+        }
+        
+        if let title = bulletPointItem.titleText {
+            bulletTitle.isHidden = false
+            bulletTitle.text = title
+        } else {
+            bulletTitle.isHidden = true
+        }
+        
+        if let subTitle = bulletPointItem.subTitleText {
+            bulletDesc.isHidden = false
+            bulletDesc.text = subTitle
+        } else {
+            bulletDesc.isHidden = true
+        }
+        
+        // Layout Cell
+        setNeedsLayout()
+        layoutIfNeeded()
     }
     
 }

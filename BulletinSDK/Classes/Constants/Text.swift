@@ -11,6 +11,9 @@ import UIKit
 public struct Text  {
     
     // MARK: - Common Texts
+    public static func GotIt() -> String { return "OKay, Go it".localized() }
+    public static func WhatsNewInThisUpdate() -> String { return "What’s new in this update?".localized() }
+    
     public static func WazirX() -> String { return "WazirX".localized() }
     public static func Binance() -> String { return "Binance".localized() }
     public static func Close() -> String { return "Close".localized() }

@@ -25,28 +25,13 @@ class TitleViewCell: BaseCollectionViewCell {
     
     public var item: Title? {
         didSet {
-            
-            // Validation
-            guard let titleItem = item else {
-                
-                // Reset To Nil
-                preTitle.text = nil
-                Title.text = nil
-                subTitle.text = nil
-                
-                return
-            }
-            
-            // Set Version Number
-            preTitle.text = titleItem.preTitleText
-            
-            // Set Version Title
-            Title.text = titleItem.titleText
-            
-            // Set Version SubTitle
-            subTitle.text = titleItem.subTitleText
-            
+            updateUI()
         }
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let size = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return CGSize(width: UIView.noIntrinsicMetric, height: size.height)
     }
 
     override func awakeFromNib() {
@@ -63,8 +48,7 @@ class TitleViewCell: BaseCollectionViewCell {
         super.updateAppearance()
         
         // Set Background Color
-        backgroundColor = AppStyle.Color.Background
-       
+        backgroundColor = AppStyle.Color.MainBgSurface_Alt
     
         // Set preTitle Label
         preTitle.small_medium()
@@ -78,6 +62,33 @@ class TitleViewCell: BaseCollectionViewCell {
         subTitle.base_regular()
         subTitle.textColor = AppStyle.Color.MainTextPrimary
         
+    }
+    
+    private func updateUI() {
+        
+        // Validation
+        guard let titleItem = item else {
+            
+            // Reset To Nil
+            preTitle.text = nil
+            Title.text = nil
+            subTitle.text = nil
+            
+            return
+        }
+        
+        // Set Version Number
+        preTitle.text = titleItem.preTitleText
+        
+        // Set Version Title
+        Title.text = titleItem.titleText
+        
+        // Set Version SubTitle
+        subTitle.text = titleItem.subTitleText
+        
+        // Layout Cell
+        setNeedsLayout()
+        layoutIfNeeded()
     }
     
 }

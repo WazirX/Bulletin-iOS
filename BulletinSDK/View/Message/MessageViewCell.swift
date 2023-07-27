@@ -21,35 +21,13 @@ class MessageViewCell: BaseCollectionViewCell {
     
     public var item: Message? {
         didSet {
-            
-            // Validation
-            guard let messageItem = item else {
-                
-                // Reset To Nil
-                descTitle.text = nil
-                
-                return
-            }
-            
-            switch (messageItem.messageType) {
-                
-            case .html:
-                
-                let htmlAttributedString = messageItem.text?.html2AttributedString(usingFont: AppStyle.Font.SemiBold(size: 14.0), color: AppStyle.Color.SecondaryText)?.trailingNewlineChopped
-                
-                if let attributedMessage = htmlAttributedString {
-                    
-                    // Set Description Message
-                    descTitle.attributedText = attributedMessage
-                }
-                
-            case .text:
-               
-                // Set Description Message
-                descTitle.text = messageItem.text
-            }
-            
+            updateUI()
         }
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let size = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return CGSize(width: UIView.noIntrinsicMetric, height: size.height)
     }
 
     override func awakeFromNib() {
@@ -61,12 +39,46 @@ class MessageViewCell: BaseCollectionViewCell {
         super.updateAppearance()
         
         // Set Background Color
-        backgroundColor = AppStyle.Color.Background
+        backgroundColor = AppStyle.Color.MainBgSurface_Alt
        
         // Set Description Label
         descTitle.base_regular()
         descTitle.textColor = AppStyle.Color.MainTextPrimary
         
+    }
+    
+    private func updateUI() {
+        
+        // Validation
+        guard let messageItem = item else {
+            
+            // Reset To Nil
+            descTitle.text = nil
+            
+            return
+        }
+        
+        switch (messageItem.messageType) {
+            
+        case .html:
+            
+            let htmlAttributedString = messageItem.text?.html2AttributedString(usingFont: AppStyle.Font.SemiBold(size: 14.0), color: AppStyle.Color.SecondaryText)?.trailingNewlineChopped
+            
+            if let attributedMessage = htmlAttributedString {
+                
+                // Set Description Message
+                descTitle.attributedText = attributedMessage
+            }
+            
+        case .text:
+           
+            // Set Description Message
+            descTitle.text = messageItem.text
+        }
+        
+        // Layout Cell
+        setNeedsLayout()
+        layoutIfNeeded()
     }
     
 }

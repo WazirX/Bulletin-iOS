@@ -31,6 +31,10 @@ class BulletinListSectionController: ListSectionController {
     override init() {
         super.init()
         
+        // Set Minimum Spacing
+        minimumLineSpacing = 16
+        
+        
         // Init Sizing Cells
         bulletPointViewCell = Bundle.main.loadNibNamed("BulletPointViewCell", owner: self, options: nil)?.first as? BulletPointViewCell
         actionButtonViewCell = Bundle.main.loadNibNamed("ActionButtonViewCell", owner: self, options: nil)?.first as? ActionButtonViewCell
@@ -72,7 +76,7 @@ class BulletinListSectionController: ListSectionController {
             messageViewCell?.item = item as? Message
             
             // Calculate Height
-            let height = max(messageViewCell?.intrinsicContentSize.height ?? 0 , 54)
+            let height = max(messageViewCell?.intrinsicContentSize.height ?? 0 , 30)
             
             // Return Size
             return CGSize(width: context.containerSize.width, height: height)
@@ -81,13 +85,11 @@ class BulletinListSectionController: ListSectionController {
             
             // Set Cell Item
             mediaViewCell?.frame = CGRect(x: 0.0, y: 0.0, width: context.containerSize.width, height: CGFloat.greatestFiniteMagnitude)
+            
             mediaViewCell?.item = item as? Media
             
-            // Calculate Height
-            let height = max(mediaViewCell?.intrinsicContentSize.height ?? 0 , 54)
-            
             // Return Size
-            return CGSize(width: context.containerSize.width, height: height)
+            return CGSize(width: context.containerSize.width , height: context.containerSize.height)
             
         case .bulletPoint:
             
@@ -96,7 +98,7 @@ class BulletinListSectionController: ListSectionController {
             bulletPointViewCell?.item = item as? BulletPoint
             
             // Calculate Height
-            let height = max(bulletPointViewCell?.intrinsicContentSize.height ?? 0 , 54)
+            let height = max(bulletPointViewCell?.intrinsicContentSize.height ?? 0 , 38)
             
             // Return Size
             return CGSize(width: context.containerSize.width, height: height)
@@ -108,7 +110,7 @@ class BulletinListSectionController: ListSectionController {
             actionButtonViewCell?.item = item as? ActionButton
             
             // Calculate Height
-            let height = max(actionButtonViewCell?.intrinsicContentSize.height ?? 0 , 54)
+            let height = max(actionButtonViewCell?.intrinsicContentSize.height ?? 0 , 50)
             
             // Return Size
             return CGSize(width: context.containerSize.width, height: height)

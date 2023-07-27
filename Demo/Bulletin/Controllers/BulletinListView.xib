@@ -15,28 +15,72 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="47f-lb-EAA">
+                    <rect key="frame" x="16" y="59" width="361" height="44.333333333333343"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TE5-5F-PpC">
+                            <rect key="frame" x="160" y="11.999999999999998" width="41.333333333333343" height="20.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <edgeInsets key="layoutMargins" top="12" left="8" bottom="12" right="8"/>
+                </stackView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7gu-Ns-2sf">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <rect key="frame" x="16" y="103.33333333333331" width="361" height="628.66666666666674"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xSK-DR-6TJ">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xnV-rr-weB">
+                    <rect key="frame" x="16" y="732" width="361" height="86"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="S5E-cg-cTt">
+                            <rect key="frame" x="0.0" y="0.0" width="361" height="86"/>
+                            <subviews>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8O-Al-e9J" customClass="PushButton" customModule="Bulletin" customModuleProvider="target">
+                                    <rect key="frame" x="20" y="16" width="321" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="JBn-I5-Dom"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Default"/>
+                                </button>
+                            </subviews>
+                            <edgeInsets key="layoutMargins" top="16" left="20" bottom="20" right="20"/>
+                        </stackView>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7gu-Ns-2sf" secondAttribute="trailing" id="7RD-kf-SSg"/>
-                <constraint firstItem="7gu-Ns-2sf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="91L-AC-tlV"/>
-                <constraint firstItem="7gu-Ns-2sf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="OTW-Jh-BOF"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7gu-Ns-2sf" secondAttribute="bottom" id="jTc-vj-QZl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7gu-Ns-2sf" secondAttribute="trailing" constant="16" id="7RD-kf-SSg"/>
+                <constraint firstItem="47f-lb-EAA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="8C7-bh-eTi"/>
+                <constraint firstItem="7gu-Ns-2sf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="OTW-Jh-BOF"/>
+                <constraint firstItem="xnV-rr-weB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="TTy-Jt-1sN"/>
+                <constraint firstItem="xnV-rr-weB" firstAttribute="top" secondItem="7gu-Ns-2sf" secondAttribute="bottom" id="WJa-LW-xy1"/>
+                <constraint firstItem="7gu-Ns-2sf" firstAttribute="top" secondItem="47f-lb-EAA" secondAttribute="bottom" id="bni-UT-Q6b"/>
+                <constraint firstItem="47f-lb-EAA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="kv3-WB-LvI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xnV-rr-weB" secondAttribute="trailing" constant="16" id="nXC-jM-IWs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="47f-lb-EAA" secondAttribute="trailing" constant="16" id="nfB-aa-7v9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xnV-rr-weB" secondAttribute="bottom" id="o1M-Uh-uJz"/>
             </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="collectionView" destination="7gu-Ns-2sf" id="Qww-ac-Wjj"/>
+                <outlet property="footerView" destination="xnV-rr-weB" id="kps-Cy-GH2"/>
+                <outlet property="gotItButton" destination="n8O-Al-e9J" id="eDy-N5-9Wj"/>
+                <outlet property="headerTitleLabel" destination="TE5-5F-PpC" id="AdC-dN-2ZT"/>
+                <outlet property="headerView" destination="47f-lb-EAA" id="Z3t-ls-7aQ"/>
             </connections>
             <point key="canvasLocation" x="73" y="30"/>
         </view>

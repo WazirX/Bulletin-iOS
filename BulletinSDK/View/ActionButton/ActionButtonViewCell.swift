@@ -22,23 +22,13 @@ class ActionButtonViewCell: BaseCollectionViewCell {
     
     public var item: ActionButton? {
         didSet {
-            
-            // Validation
-            guard let actionButtonItem = item else {
-                
-                // Reset To Nil
-                actionButton = nil
-                
-                return
-            }
-            
-            
-            // Open Gift Button
-            if let actionButtonTitle = actionButtonItem.title {
-                actionButton.setTitle(actionButtonTitle.uppercased(), for: .normal)
-            }
-            
+            updateUI()
         }
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let size = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return CGSize(width: UIView.noIntrinsicMetric, height: size.height)
     }
 
     override func awakeFromNib() {
@@ -52,7 +42,7 @@ class ActionButtonViewCell: BaseCollectionViewCell {
         super.updateAppearance()
         
         // Set BackgroundColor
-        backgroundColor = AppStyle.Color.Background
+        backgroundColor = AppStyle.Color.MainBgSurface_Alt
         
         // Set Action Button Container View
         actionButton.setTitleColor(AppStyle.Color.BrandTextPrimary, for: .normal)
@@ -60,6 +50,28 @@ class ActionButtonViewCell: BaseCollectionViewCell {
         actionButton.layer.borderWidth = 1.0
         actionButton.layer.borderColor = AppStyle.Color.BrandBgPrimary.cgColor
       
+    }
+    
+    private func updateUI() {
+        
+        // Validation
+        guard let actionButtonItem = item else {
+            
+            // Reset To Nil
+            actionButton = nil
+            
+            return
+        }
+        
+        
+        // Open Gift Button
+        if let actionButtonTitle = actionButtonItem.title {
+            actionButton.setTitle(actionButtonTitle.uppercased(), for: .normal)
+        }
+        
+        // Layout Cell
+        setNeedsLayout()
+        layoutIfNeeded()
     }
     
     @IBAction func updateProfileButtonTapped(_ sender: Any) {

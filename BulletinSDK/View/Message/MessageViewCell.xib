@@ -21,13 +21,13 @@
                         <rect key="frame" x="0.0" y="59" width="399" height="86"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4l5-BZ-t4P">
-                                <rect key="frame" x="16" y="8" width="366" height="70"/>
+                                <rect key="frame" x="16" y="0.0" width="366" height="86"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
+                        <edgeInsets key="layoutMargins" top="0.0" left="16" bottom="0.0" right="16"/>
                     </stackView>
                 </subviews>
             </view>

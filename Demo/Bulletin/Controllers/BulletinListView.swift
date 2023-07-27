@@ -13,8 +13,12 @@ class BulletinListView: UIView, BulletinSectionControllerDelegate {
 
     // MARK: - Variables
     @IBOutlet private var collectionView : UICollectionView!
+    @IBOutlet private var headerTitleLabel : UILabel!
+    @IBOutlet private var headerView : UIStackView!
+    @IBOutlet private var footerView : UIStackView!
+    @IBOutlet private var gotItButton : UIButton!
     
-    private var bulletinSection = BulletinSection() {
+    private var bulletinSection = [BulletinInfo]() {
         didSet {
             // Update Collection View
             DispatchQueue.main.async { [weak self] in
@@ -24,13 +28,17 @@ class BulletinListView: UIView, BulletinSectionControllerDelegate {
         }
     }
     
+    internal var bulletinItems : [ListDiffable] {
+        return bulletinSection
+    }
+    
     internal lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: nil, workingRangeSize: 0)
     }()
 
     
     // MARK: - Initialisation Methods
-    public class func instance(bulletinSection: BulletinSection) -> BulletinListView {
+    public class func instance(items: [BulletinInfo]) -> BulletinListView {
         
         // Create Instance From XIB
         let className = String(describing: BulletinListView.self)
@@ -40,14 +48,14 @@ class BulletinListView: UIView, BulletinSectionControllerDelegate {
             // Set View Flexibility
             view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             view.translatesAutoresizingMaskIntoConstraints = true
-            view.bulletinSection = bulletinSection
+            view.bulletinSection = items
         
             return view
         }
         
         // Manually Create Instance
         let bulletinListView = BulletinListView()
-        bulletinListView.bulletinSection = bulletinSection
+        bulletinListView.bulletinSection = items
         return bulletinListView
     }
     
@@ -58,6 +66,37 @@ class BulletinListView: UIView, BulletinSectionControllerDelegate {
         adapter.collectionView = collectionView
         adapter.dataSource = self
         adapter.collectionViewDelegate = self
+        
+        gotItButton.layer.cornerRadius = AppStyle.ButtonCornerRadius
+        
+        // Set Insets
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 64, right: 0)
+        
+        updateAppearance()
+        
+        updateContent()
+    }
+    
+    func updateAppearance() {
+        
+        // Set Default Properties
+        headerView.backgroundColor = AppStyle.Color.MainNavigationBg
+        footerView.backgroundColor = AppStyle.Color.MainBgSurface_Alt
+        gotItButton.backgroundColor = AppStyle.Color.BrandBgPrimary
+        
+        headerTitleLabel.textColor = AppStyle.Color.BrandTextOnPrimary
+        headerTitleLabel.large_semibold()
+        
+        gotItButton.setTitleColor(AppStyle.Color.BrandTextOnPrimary, for: .normal)
+        gotItButton.titleLabel?.base_semibold()
+        
+    }
+    
+    func updateContent() {
+        
+        // Set Default Proeprties
+        headerTitleLabel.text = Text.WhatsNewInThisUpdate()
+        gotItButton.setTitle(Text.GotIt().uppercased(), for: .normal)
     }
     
     // MARK: - Initialisation Methods
@@ -89,9 +128,7 @@ class BulletinListView: UIView, BulletinSectionControllerDelegate {
 extension BulletinListView: ListAdapterDataSource {
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        var items = [ListDiffable]()
-        items += [bulletinSection] as [ListDiffable]
-        return items
+        return bulletinItems
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {

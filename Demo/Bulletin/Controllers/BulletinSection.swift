@@ -10,20 +10,21 @@ import UIKit
 import IGListKit
 
 
-class BulletinSection : NSObject  {
-    
-    
-    // MARK: - Variables
-    public var bulletinInfo = [BulletinInfo]()
-    
-}
-
-extension BulletinSection : ListDiffable {
-    public func diffIdentifier() -> NSObjectProtocol {
-        return self
-    }
-    
-    public func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-        return isEqual(object)
-    }
-}
+//class BulletinSection : NSObject  {
+//
+//
+//    // MARK: - Variables
+//    public var bulletinInfo = [BulletinInfo]()
+//  //  public var items = [BulletinItem]()
+//
+//}
+//
+//extension BulletinSection : ListDiffable {
+//    public func diffIdentifier() -> NSObjectProtocol {
+//        return self
+//    }
+//
+//    public func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+//        return isEqual(object)
+//    }
+//}

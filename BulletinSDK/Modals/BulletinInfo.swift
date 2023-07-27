@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import IGListKit
 
-class BulletinInfo {
+class BulletinInfo : NSObject {
     
     
     // MARK: - Variables
@@ -24,6 +25,16 @@ class BulletinInfo {
         
         // Set Items
         self.items = items
+    }
+}
+
+extension BulletinInfo : ListDiffable {
+    public func diffIdentifier() -> NSObjectProtocol {
+        return self
+    }
+    
+    public func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        return isEqual(object)
     }
 }
 

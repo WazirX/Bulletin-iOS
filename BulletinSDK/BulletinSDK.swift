@@ -15,10 +15,11 @@ class BulletinSDK   {
     
     
     // MARK: Initialisation Method
-    public init(dataStore: BulletinDataStore) {
+    public init(dataStore: BulletinDataStore, appearance: Appearance) {
         
         // Set Data Store
         self.dataStore = dataStore
+        applyAppearance(theme: appearance)
     }
     
     
@@ -59,11 +60,25 @@ class BulletinSDK   {
         guard let items = items,
               items.isEmpty == false else { return nil }
         
-        let bulletinSection = BulletinSection()
-        bulletinSection.bulletinInfo = items
-        
-        let bulletinView = BulletinListView.instance(bulletinSection: bulletinSection)
+        let bulletinView = BulletinListView.instance(items: items)
         
         return bulletinView
+    }
+    
+    private func applyAppearance(theme: Appearance)  {
+        
+        // Apply Theme
+        switch theme {
+            case .darkKnight:
+           
+            // Apply Dark Knight Theme
+            Appearance.darkKnight.apply(shouldBroadcastUpdate: true)
+            
+            case .whiteKnight:
+            
+            // Apply Dark Knight Theme
+            Appearance.whiteKnight.apply(shouldBroadcastUpdate: true)
+        }
+        
     }
 }
