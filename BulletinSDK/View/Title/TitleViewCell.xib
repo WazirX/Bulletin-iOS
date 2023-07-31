@@ -57,9 +57,9 @@
             </constraints>
             <size key="customSize" width="303" height="217"/>
             <connections>
-                <outlet property="Title" destination="82X-bT-iWX" id="7vo-u6-Wtm"/>
-                <outlet property="preTitle" destination="XbY-GP-CVp" id="3BT-ND-bu2"/>
-                <outlet property="subTitle" destination="7N3-aW-YCw" id="UDb-HF-6ju"/>
+                <outlet property="preTitleLabel" destination="XbY-GP-CVp" id="qDX-zv-SlS"/>
+                <outlet property="subTitleLabel" destination="7N3-aW-YCw" id="gNR-Iy-Ihk"/>
+                <outlet property="titleLabel" destination="82X-bT-iWX" id="HqT-0p-wpA"/>
             </connections>
             <point key="canvasLocation" x="238.93129770992365" y="49.647887323943664"/>
         </collectionViewCell>

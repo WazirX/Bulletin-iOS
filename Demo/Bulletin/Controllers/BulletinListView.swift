@@ -9,7 +9,11 @@
 import UIKit
 import IGListKit
 
-class BulletinListView: UIView, BulletinSectionControllerDelegate {
+internal protocol BulletinListDelegate: AnyObject {
+    func BulletinList(didClickItem item: BulletinItem)
+}
+
+class BulletinListView: UIViewController {
 
     // MARK: - Variables
     @IBOutlet private var collectionView : UICollectionView!
@@ -17,16 +21,10 @@ class BulletinListView: UIView, BulletinSectionControllerDelegate {
     @IBOutlet private var headerView : UIStackView!
     @IBOutlet private var footerView : UIStackView!
     @IBOutlet private var gotItButton : UIButton!
+    public weak var delegate: BulletinListDelegate?
     
-    private var bulletinSection = [BulletinInfo]() {
-        didSet {
-            // Update Collection View
-            DispatchQueue.main.async { [weak self] in
-                // Perform Updates
-                self?.adapter.performUpdates(animated: true, completion: nil)
-            }
-        }
-    }
+    private var bulletinSection = [BulletinInfo]()
+
     
     internal var bulletinItems : [ListDiffable] {
         return bulletinSection
@@ -70,7 +68,7 @@ class BulletinListView: UIView, BulletinSectionControllerDelegate {
         gotItButton.layer.cornerRadius = AppStyle.ButtonCornerRadius
         
         // Set Insets
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 64, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 16, bottom: 64, right: 16)
         
         updateAppearance()
         
@@ -114,7 +112,7 @@ class BulletinListView: UIView, BulletinSectionControllerDelegate {
     }
     
     // MARK: - Helper Method
-    internal func performUpdates(animated: Bool, completion: ListUpdaterCompletion? = nil) {
+    public func reload(animated: Bool, completion: ListUpdaterCompletion? = nil) {
         
         DispatchQueue.main.async { [weak self] in
             // Perform Updates
@@ -143,4 +141,14 @@ extension BulletinListView: ListAdapterDataSource {
 // MARK: - UICollectionViewDelegate
 extension BulletinListView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
+}
+
+// MARK: - BulletinSectionControllerDelegate
+extension BulletinListView: BulletinSectionControllerDelegate {
+    func bulletinSectionController(_ sectionController: BulletinListSectionController, didClickItem item: BulletinItem) {
+        
+        // Clicked Item
+        delegate?.BulletinList(didClickItem: item)
+    }
+    
 }

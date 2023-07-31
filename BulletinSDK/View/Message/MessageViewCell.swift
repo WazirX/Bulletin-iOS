@@ -15,7 +15,7 @@ protocol MessageViewCellDelegate: AnyObject {
 class MessageViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
-    @IBOutlet private var descTitle: UILabel!
+    @IBOutlet private var descMsgLabel: UILabel!
     
     public weak var delegate: MessageViewCellDelegate?
     
@@ -30,6 +30,7 @@ class MessageViewCell: BaseCollectionViewCell {
         return CGSize(width: UIView.noIntrinsicMetric, height: size.height)
     }
 
+    // MARK: - Initialisation Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,23 +38,24 @@ class MessageViewCell: BaseCollectionViewCell {
     
     override func updateAppearance() {
         super.updateAppearance()
-        
+
         // Set Background Color
         backgroundColor = AppStyle.Color.MainBgSurface_Alt
-       
+
         // Set Description Label
-        descTitle.base_regular()
-        descTitle.textColor = AppStyle.Color.MainTextPrimary
-        
+        descMsgLabel.base_regular()
+        descMsgLabel.textColor = AppStyle.Color.MainTextPrimary
+
     }
     
+    //MARK: - Helper Methods
     private func updateUI() {
         
         // Validation
         guard let messageItem = item else {
             
             // Reset To Nil
-            descTitle.text = nil
+            descMsgLabel.text = nil
             
             return
         }
@@ -62,18 +64,27 @@ class MessageViewCell: BaseCollectionViewCell {
             
         case .html:
             
-            let htmlAttributedString = messageItem.text?.html2AttributedString(usingFont: AppStyle.Font.SemiBold(size: 14.0), color: AppStyle.Color.SecondaryText)?.trailingNewlineChopped
-            
-            if let attributedMessage = htmlAttributedString {
-                
-                // Set Description Message
-                descTitle.attributedText = attributedMessage
+            // Set Html Description Message
+            if let descMessage = messageItem.text,
+               descMessage.isEmpty == false,
+             let htmlAttributedString = descMessage.html2AttributedString(usingFont: nil, color: AppStyle.Color.SecondaryText)?.trailingNewlineChopped
+            {
+                descMsgLabel.attributedText = htmlAttributedString
+                descMsgLabel.isHidden = false
+            } else {
+                descMsgLabel.isHidden = true
             }
             
         case .text:
-           
+            
             // Set Description Message
-            descTitle.text = messageItem.text
+            if let descMessage = messageItem.text,descMessage.isEmpty == false {
+                descMsgLabel.text = descMessage
+                descMsgLabel.isHidden = false
+            } else {
+                descMsgLabel.isHidden = true
+            }
+
         }
         
         // Layout Cell

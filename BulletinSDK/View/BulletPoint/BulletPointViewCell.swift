@@ -33,6 +33,7 @@ class BulletPointViewCell: BaseCollectionViewCell {
         return CGSize(width: UIView.noIntrinsicMetric, height: size.height)
     }
 
+    // MARK: - Initialisation Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -56,6 +57,7 @@ class BulletPointViewCell: BaseCollectionViewCell {
       //  bulletName.heading4_semibold()
     }
     
+    //MARK: - Helper Methods
     private func updateUI() {
         
         // Validation
@@ -74,13 +76,14 @@ class BulletPointViewCell: BaseCollectionViewCell {
             
         case .unicode:
             
-            if let test = bulletPointItem.bullet?.unicode?.unicodeString {
-                bulletName.text = test
+            // Set Unicode Icon
+            if let bulletUnicode = bulletPointItem.bullet?.unicode?.unicodeString {
+                bulletName.text = bulletUnicode
             }
             
         case .image:
            
-            // Set downloaded Image Icon
+            // Set Image Icon
             if let iconUrl = bulletPointItem.bullet?.imageUrl {
                 bulletImageView.kf.setImage(with: iconUrl) { [weak self] (result) in
                     switch result {
@@ -89,26 +92,32 @@ class BulletPointViewCell: BaseCollectionViewCell {
                         // Image downloaded
                         if let sourceUrl = value.source.url,
                            sourceUrl == iconUrl {
+                            self?.bulletImageView.isHidden = true
                             self?.bulletImageView.image = value.image
                         }
                     case .failure(let error):
                         print("\(error.localizedDescription)")
                     }
                 }
+            } else {
+                bulletImageView.image = nil
+                bulletImageView.isHidden = true
             }
             
         case .none:
-            bulletTitle.isHidden = false
-           // bulletDesc.isHidden = true
+            bulletImageView.isHidden = true
+            bulletName.isHidden = true
         }
         
-        if let title = bulletPointItem.titleText {
+        // Set Bullet Title
+        if let title = bulletPointItem.titleText,title.isEmpty == false {
             bulletTitle.isHidden = false
             bulletTitle.text = title
         } else {
             bulletTitle.isHidden = true
         }
         
+        // Set Bullet Desc
         if let subTitle = bulletPointItem.subTitleText {
             bulletDesc.isHidden = false
             bulletDesc.text = subTitle

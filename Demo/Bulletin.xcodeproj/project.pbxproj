@@ -26,13 +26,14 @@
 		73B17D612A6649240085EB1A /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B17D5E2A6649240085EB1A /* Text.swift */; };
 		73B17D622A6649240085EB1A /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B17D5F2A6649240085EB1A /* Appearance.swift */; };
 		73CC10192A650D1600BB08C5 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC10182A650D1600BB08C5 /* BaseCollectionViewCell.swift */; };
+		73D8C8412A715A6400652504 /* String+Unicode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D8C8402A715A6400652504 /* String+Unicode.swift */; };
+		73D8C8432A7164C700652504 /* UIView+SubviewAspectSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D8C8422A7164C700652504 /* UIView+SubviewAspectSize.swift */; };
 		73E824F92A6A4F72007AA8D7 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E824F82A6A4F72007AA8D7 /* String+HTML.swift */; };
 		73E824FB2A6A51AD007AA8D7 /* NSAttributedString+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E824FA2A6A51AD007AA8D7 /* NSAttributedString+Utility.swift */; };
 		73E824FF2A6A67F5007AA8D7 /* PushButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E824FE2A6A67F5007AA8D7 /* PushButton.swift */; };
 		73F62F782A6E2CF0007CBC36 /* BottomSheetSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F62F772A6E2CF0007CBC36 /* BottomSheetSegue.swift */; };
 		73F62F7A2A6E2D0E007CBC36 /* AlertSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F62F792A6E2D0E007CBC36 /* AlertSegue.swift */; };
 		73F62F7C2A6E4D79007CBC36 /* BulletinHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F62F7B2A6E4D79007CBC36 /* BulletinHelper.swift */; };
-		73F62F7E2A6E83AF007CBC36 /* BulletinSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F62F7D2A6E83AF007CBC36 /* BulletinSection.swift */; };
 		73F62F882A6E90B1007CBC36 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F62F822A6E90B1007CBC36 /* IBMPlexSans-Regular.ttf */; };
 		73F62F892A6E90B1007CBC36 /* IBMPlexSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F62F832A6E90B1007CBC36 /* IBMPlexSans-SemiBold.ttf */; };
 		73F62F8A2A6E90B1007CBC36 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F62F842A6E90B1007CBC36 /* IBMPlexSans-SemiBoldItalic.ttf */; };
@@ -82,13 +83,14 @@
 		73B17D5E2A6649240085EB1A /* Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		73B17D5F2A6649240085EB1A /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		73CC10182A650D1600BB08C5 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		73D8C8402A715A6400652504 /* String+Unicode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Unicode.swift"; sourceTree = "<group>"; };
+		73D8C8422A7164C700652504 /* UIView+SubviewAspectSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SubviewAspectSize.swift"; sourceTree = "<group>"; };
 		73E824F82A6A4F72007AA8D7 /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 		73E824FA2A6A51AD007AA8D7 /* NSAttributedString+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Utility.swift"; sourceTree = "<group>"; };
 		73E824FE2A6A67F5007AA8D7 /* PushButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushButton.swift; sourceTree = "<group>"; };
 		73F62F772A6E2CF0007CBC36 /* BottomSheetSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetSegue.swift; sourceTree = "<group>"; };
 		73F62F792A6E2D0E007CBC36 /* AlertSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSegue.swift; sourceTree = "<group>"; };
 		73F62F7B2A6E4D79007CBC36 /* BulletinHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinHelper.swift; sourceTree = "<group>"; };
-		73F62F7D2A6E83AF007CBC36 /* BulletinSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinSection.swift; sourceTree = "<group>"; };
 		73F62F822A6E90B1007CBC36 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
 		73F62F832A6E90B1007CBC36 /* IBMPlexSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		73F62F842A6E90B1007CBC36 /* IBMPlexSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -200,6 +202,8 @@
 				732D1C302A66C6F500FB5BFE /* UILabel+FontStyle.swift */,
 				73E824FA2A6A51AD007AA8D7 /* NSAttributedString+Utility.swift */,
 				73E824F82A6A4F72007AA8D7 /* String+HTML.swift */,
+				73D8C8402A715A6400652504 /* String+Unicode.swift */,
+				73D8C8422A7164C700652504 /* UIView+SubviewAspectSize.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -210,7 +214,6 @@
 				738B01EB2A67BCEE00CFDB09 /* BulletinListView.swift */,
 				738B01ED2A67BCFB00CFDB09 /* BulletinListView.xib */,
 				738B01EF2A6819C900CFDB09 /* BulletinListSectionController.swift */,
-				73F62F7D2A6E83AF007CBC36 /* BulletinSection.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				73B17D602A6649240085EB1A /* Constants.swift in Sources */,
 				73F62F782A6E2CF0007CBC36 /* BottomSheetSegue.swift in Sources */,
 				7315D8492A696EFC00B7CE4F /* BulletPointViewCell.swift in Sources */,
+				73D8C8412A715A6400652504 /* String+Unicode.swift in Sources */,
 				815E3DB828DC884C0042CEA5 /* Title.swift in Sources */,
 				732D1C312A66C6F500FB5BFE /* UILabel+FontStyle.swift in Sources */,
 				73E824FF2A6A67F5007AA8D7 /* PushButton.swift in Sources */,
@@ -560,12 +564,12 @@
 				81E010E228DDA2D9003FFE79 /* UserDefaults+Storage.swift in Sources */,
 				815E3DB328DC884C0042CEA5 /* BulletinDataStore.swift in Sources */,
 				815E3DBB28DC884C0042CEA5 /* BulletinSDK.swift in Sources */,
-				73F62F7E2A6E83AF007CBC36 /* BulletinSection.swift in Sources */,
 				819772DE28E40B8100962913 /* Version.swift in Sources */,
 				738B01F02A6819C900CFDB09 /* BulletinListSectionController.swift in Sources */,
 				7315D8592A69703700B7CE4F /* TitleViewCell.swift in Sources */,
 				73E824F92A6A4F72007AA8D7 /* String+HTML.swift in Sources */,
 				815E3DB228DC884C0042CEA5 /* String+Class.swift in Sources */,
+				73D8C8432A7164C700652504 /* UIView+SubviewAspectSize.swift in Sources */,
 				819772E028E40C4800962913 /* String+Version.swift in Sources */,
 				815E3DB728DC884C0042CEA5 /* BulletPoint.swift in Sources */,
 				819772DC28E2CBEF00962913 /* BulletinInfo.swift in Sources */,

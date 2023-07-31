@@ -40,7 +40,7 @@
             </constraints>
             <size key="customSize" width="399" height="179"/>
             <connections>
-                <outlet property="descTitle" destination="4l5-BZ-t4P" id="b0U-qB-304"/>
+                <outlet property="descMsgLabel" destination="4l5-BZ-t4P" id="YMN-PM-6XJ"/>
             </connections>
             <point key="canvasLocation" x="312.21374045801525" y="48.239436619718312"/>
         </collectionViewCell>

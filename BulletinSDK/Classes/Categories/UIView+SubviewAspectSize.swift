@@ -42,6 +42,17 @@ extension UIView {
         return CGSize(width: newSubviewWidth, height: newSubviewHeight)
     }
     
+    // Get Subview Aspect Height
+    func getAspectHeightForSubView(subviewWidth: CGFloat, subviewHeight: CGFloat) -> CGFloat {
+        let viewWidth = frame.size.width
+        let viewHeight = frame.size.height
+        
+        var newSubviewWidth: CGFloat = viewWidth
+        var newSubviewHeight: CGFloat = getNewSubviewHeight(using: newSubviewWidth, subviewWidth: subviewWidth, subviewHeight: subviewHeight)
+        
+        return newSubviewHeight
+    }
+    
     // Get New Subview Proportional Width
     func getNewSubviewWidth(using newSubviewHeight: CGFloat, subviewWidth: CGFloat, subviewHeight: CGFloat) -> CGFloat {
         return (newSubviewHeight * subviewWidth) / subviewHeight

@@ -16,76 +16,87 @@ protocol MediaViewCellDelegate: AnyObject {
 class MediaViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
-    @IBOutlet public var cardViewContainer: UIView!
-    @IBOutlet private var artworkImageView: UIImageView!
+  //  @IBOutlet private weak var cardViewContainer: UIView!
+    @IBOutlet private weak var mediaImageView: UIImageView!
+    @IBOutlet private weak var imageViewHeightConstraint: NSLayoutConstraint!
     
     public weak var delegate: MediaViewCellDelegate?
     
     public var item: Media? {
         didSet {
-            updateUI()
+            self.updateUI()
         }
+    }
+    
+    override var intrinsicContentSize: CGSize   {
+        let size = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return CGSize(width: UIView.noIntrinsicMetric, height: size.height)
+    }
+    
+    
+    // MARK: - Initialisation Methods
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         // Setting Frame Of Inside Container SubView Of Cell
-//        let size = subviewAspectSizeWithPadding(padding: 0, subviewWidth: item?.size?.width ?? 0.0, subviewHeight: 135.0)
-//        cardViewContainer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-//        artworkImageView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-//        
-//        // Set Container View In Center Of Cell
-//        cardViewContainer.center = CGPoint(x: bounds.size.width / 2.0, y: bounds.size.height / 2.0)
+//        if let item = item,
+//           let itemSize = item.size {
+//            let height : CGFloat = (contentView.frame.width * itemSize.height) / itemSize.width
+//            imageViewHeightConstraint.constant = height
+//        } else {
+//            imageViewHeightConstraint.constant = 135
+//        }
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-        // Resize All InnerViews According To Content And Sent Width Height Of Cell
-        cardViewContainer.autoresizesSubviews = true
-        for _viewInner in cardViewContainer.subviews {
-            
-            _viewInner.autoresizesSubviews = true;
-            _viewInner.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
-        }
-    }
-
+    //MARK: - Helper Methods
     private func updateUI() {
+        
+        // Reset To Nil
+        mediaImageView.kf.cancelDownloadTask()
+        mediaImageView.image = nil
         
         // Validation
         guard let mediaItem = item else {
-           
-            // Reset To Nil
-            artworkImageView.image = nil
             return
         }
         
-        // Set downloaded Image Icon
+        // Set Image
         if let iconUrl = mediaItem.url {
-            artworkImageView.kf.setImage(with: iconUrl) { [weak self] (result) in
+            mediaImageView.kf.setImage(with: iconUrl) { [weak self] (result) in
                 switch result {
                 case .success(let value):
                     
                     // Image downloaded
-                    if let sourceUrl = value.source.url,
+                    if let weakSelf = self,
+                       let sourceUrl = value.source.url,
                        sourceUrl == iconUrl {
-                        self?.artworkImageView.image = value.image
+                        weakSelf.mediaImageView.image = value.image
+                        weakSelf.mediaImageView.isHidden = false
                     }
                 case .failure(let error):
                     print("\(error.localizedDescription)")
                 }
             }
+        } else {
+            mediaImageView.isHidden = true
         }
         
         // Setting Frame Of Inside Container SubView Of Cell
-        let size = subviewAspectSizeWithPadding(padding: 0, subviewWidth: item?.size?.width ?? 0.0, subviewHeight: item?.size?.height ?? 0.0)
-        cardViewContainer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        artworkImageView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        
-        // Set Container View In Center Of Cell
-        cardViewContainer.center = CGPoint(x: bounds.size.width / 2.0, y: bounds.size.height / 2.0)
+        if let itemSize = mediaItem.size {
+            let height : CGFloat = (frame.width * itemSize.height) / itemSize.width
+            imageViewHeightConstraint.constant = height
+        } else {
+            imageViewHeightConstraint.constant = 135
+        }
+       
+        // Layout Cell
+        layoutIfNeeded()
+    
     }
     
     override func updateAppearance() {
@@ -93,7 +104,7 @@ class MediaViewCell: BaseCollectionViewCell {
         
         // Set Background Color
         backgroundColor = AppStyle.Color.SuccessTextPrimary
-        cardViewContainer.backgroundColor = AppStyle.Color.DangerTextPrimary
+      //  cardViewContainer.backgroundColor = AppStyle.Color.DangerTextPrimary
     }
     
 }

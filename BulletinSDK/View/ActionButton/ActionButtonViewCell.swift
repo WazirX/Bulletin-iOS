@@ -17,7 +17,6 @@ class ActionButtonViewCell: BaseCollectionViewCell {
     // MARK: - Variables
     @IBOutlet private var actionButton: PushButton!
     
-    
     public weak var delegate: ActionButtonViewCellDelegate?
     
     public var item: ActionButton? {
@@ -31,6 +30,7 @@ class ActionButtonViewCell: BaseCollectionViewCell {
         return CGSize(width: UIView.noIntrinsicMetric, height: size.height)
     }
 
+    // MARK: - Initialisation Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -52,6 +52,7 @@ class ActionButtonViewCell: BaseCollectionViewCell {
       
     }
     
+    //MARK: - Helper Methods
     private func updateUI() {
         
         // Validation
@@ -74,7 +75,7 @@ class ActionButtonViewCell: BaseCollectionViewCell {
         layoutIfNeeded()
     }
     
-    @IBAction func updateProfileButtonTapped(_ sender: Any) {
+    @IBAction func actionButtonTapped(_ sender: Any) {
         
         // Validation
         guard let item = item else { return }

@@ -31,6 +31,9 @@
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Default"/>
+                                        <connections>
+                                            <action selector="actionButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="iey-re-seP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
@@ -41,6 +44,7 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="pl4-eM-f9V" secondAttribute="bottom" id="Dbw-Jw-32H"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="pl4-eM-f9V" secondAttribute="top" id="P8F-iZ-S9B"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="pl4-eM-f9V" secondAttribute="leading" id="oH8-V8-etu"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="pl4-eM-f9V" secondAttribute="trailing" id="tm8-Sp-sFE"/>

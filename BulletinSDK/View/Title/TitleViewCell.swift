@@ -15,13 +15,11 @@ protocol TitleViewCellDelegate: AnyObject {
 class TitleViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
-    @IBOutlet private var actionContainerStackView: UIStackView!
-    @IBOutlet private var preTitle: UILabel!
-    @IBOutlet private var Title: UILabel!
-    @IBOutlet private var subTitle: UILabel!
+    @IBOutlet private var preTitleLabel: UILabel!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var subTitleLabel: UILabel!
     
     public weak var delegate: TitleViewCellDelegate?
-    
     
     public var item: Title? {
         didSet {
@@ -34,6 +32,7 @@ class TitleViewCell: BaseCollectionViewCell {
         return CGSize(width: UIView.noIntrinsicMetric, height: size.height)
     }
 
+    // MARK: - Initialisation Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -51,41 +50,56 @@ class TitleViewCell: BaseCollectionViewCell {
         backgroundColor = AppStyle.Color.MainBgSurface_Alt
     
         // Set preTitle Label
-        preTitle.small_medium()
-        preTitle.textColor = AppStyle.Color.SuccessTextPrimary
+        preTitleLabel.small_medium()
+        preTitleLabel.textColor = AppStyle.Color.SuccessTextPrimary
         
         // Set Title Label
-        Title.heading4_semibold()
-        Title.textColor = AppStyle.Color.MainTextPrimary
+        titleLabel.heading4_semibold()
+        titleLabel.textColor = AppStyle.Color.MainTextPrimary
         
         // Set subTitle Label
-        subTitle.base_regular()
-        subTitle.textColor = AppStyle.Color.MainTextPrimary
+        subTitleLabel.base_regular()
+        subTitleLabel.textColor = AppStyle.Color.MainTextPrimary
         
     }
     
+    //MARK: - Helper Methods
     private func updateUI() {
         
         // Validation
         guard let titleItem = item else {
             
             // Reset To Nil
-            preTitle.text = nil
-            Title.text = nil
-            subTitle.text = nil
-            
+            preTitleLabel.text = nil
+            titleLabel.text = nil
+            subTitleLabel.text = nil
             return
         }
         
         // Set Version Number
-        preTitle.text = titleItem.preTitleText
+        if let preTitle = titleItem.preTitleText,preTitle.isEmpty == false {
+            preTitleLabel.text = preTitle
+            preTitleLabel.isHidden = false
+        } else {
+            preTitleLabel.isHidden = true
+        }
         
         // Set Version Title
-        Title.text = titleItem.titleText
+        if let title = titleItem.titleText,title.isEmpty == false {
+            titleLabel.text = title
+            titleLabel.isHidden = false
+        } else {
+            titleLabel.isHidden = true
+        }
         
         // Set Version SubTitle
-        subTitle.text = titleItem.subTitleText
-        
+        if let subTitle = titleItem.subTitleText,subTitle.isEmpty == false {
+            subTitleLabel.text = subTitle
+            subTitleLabel.isHidden = false
+        } else {
+            subTitleLabel.isHidden = true
+        }
+
         // Layout Cell
         setNeedsLayout()
         layoutIfNeeded()

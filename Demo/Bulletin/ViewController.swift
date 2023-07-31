@@ -18,12 +18,12 @@ class ViewController: UIViewController {
         
         // Register Multiple Versions
         registerBulletingDetails(forVersion: Version("1.11"), inDataStore: dataSource)
-        registerBulletingDetails(forVersion: Version("1.12"), inDataStore: dataSource)
-        registerBulletingDetails(forVersion: Version("1.12.1"), inDataStore: dataSource)
-        registerBulletingDetails(forVersion: Version("1.12.2"), inDataStore: dataSource)
-        registerBulletingDetails(forVersion: Version("1.13"), inDataStore: dataSource)
-        registerBulletingDetails(forVersion: Version("1.13.1"), inDataStore: dataSource)
-        registerBulletingDetails(forVersion: Version("1.14"), inDataStore: dataSource)
+//        registerBulletingDetails(forVersion: Version("1.12"), inDataStore: dataSource)
+//        registerBulletingDetails(forVersion: Version("1.12.1"), inDataStore: dataSource)
+//        registerBulletingDetails(forVersion: Version("1.12.2"), inDataStore: dataSource)
+//        registerBulletingDetails(forVersion: Version("1.13"), inDataStore: dataSource)
+//        registerBulletingDetails(forVersion: Version("1.13.1"), inDataStore: dataSource)
+//        registerBulletingDetails(forVersion: Version("1.14"), inDataStore: dataSource)
     
 
         let sdk = BulletinSDK(dataStore: dataSource,appearance: Appearance.whiteKnight)
@@ -32,7 +32,12 @@ class ViewController: UIViewController {
 //        let _ = sdk.getUnseenBulletins(limit: 4)
         
         if let bulletinView = bulletinView {
+            bulletinView.frame = view.bounds
+            bulletinView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+            bulletinView.translatesAutoresizingMaskIntoConstraints = true
+            bulletinView.delegate = self
             self.view.addSubview(bulletinView)
+            bulletinView.reload(animated: false)
         }
         
         // Get Top Most View Controller
@@ -64,11 +69,13 @@ class ViewController: UIViewController {
         title2.subTitleText = "Vestibulum id ligula porta felis euismod semper. Vesti bu lum id ligula porta felis euismod semper."
         
         let message2 = Message()
-        message2.messageType = .text
-        message2.text = "Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros."
+        message2.messageType = .html
+        message2.text = "<header><h1>Harry Potter's House</h1><p>Privet Drive,4<br>Little Whinging<br>Surrey<br>England<br>Great Britain</p></header>"
+        //"<header>\n" + "<h1>Harry Potter's House</h1>\n" + "<p class=\"address\">\n" + "Privet Drive, 4<br>Little Whinging<br>Surrey<br>England<br>Great Britain\n" + "</p>\n" + "</header>"
+    //    message2.text = "Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros."
         
         let media = Media()
-        media.size = CGSize(width: 300.0, height: 300.0)
+        media.size = CGSize(width: 1180, height: 596)
         media.url = URL(string:"https://media.wazirx.com/test_resources/crypto_gifts.png")
         
         let bullet2 = Bullet()
@@ -95,5 +102,27 @@ class ViewController: UIViewController {
         dataStore.registerVersionInfo(version: version, items: bulletItems2)
     }
 
+}
+
+//// MARK: - WZSettingsSectionControllerDelegate
+extension ViewController: BulletinListDelegate {
+    
+    func BulletinList(didClickItem item: BulletinItem) {
+        
+        
+        // Set Message Type
+//        if let messasgeTypeString = attributes["messageType"] as? String,
+//           let messageType = MessageType(rawValue: messasgeTypeString) {
+//            self.messageType = messageType
+//        }
+//
+        // Validation
+        if let actionButtonItem = item as? ActionButton,
+           let actionButtonPayload = actionButtonItem.clickPayload {
+            print(actionButtonPayload)
+        }
+        
+    }
+   
 }
 
