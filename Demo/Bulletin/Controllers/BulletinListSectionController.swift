@@ -33,7 +33,7 @@ class BulletinListSectionController: ListSectionController {
         
         // Set Minimum Spacing
         minimumLineSpacing = 16
-        inset = UIEdgeInsets(top: 16, left: 0, bottom:0, right: 0)
+        inset = UIEdgeInsets(top: 20, left: 0, bottom:0, right: 0)
         
         
         // Init Sizing Cells
@@ -60,15 +60,18 @@ class BulletinListSectionController: ListSectionController {
             
         case .title:
             
+            // Calculate Width
+            let width = context.containerSize.width - inset.left - inset.right
+            
             // Set Cell Item
-            titleViewCell?.frame = CGRect(x: 0.0, y: 0.0, width: context.containerSize.width, height: CGFloat.greatestFiniteMagnitude)
+            titleViewCell?.frame = CGRect(x: 0.0, y: 0.0, width: width, height: CGFloat.greatestFiniteMagnitude)
             titleViewCell?.item = item as? Title
             
             // Calculate Height
             let height = max(titleViewCell?.intrinsicContentSize.height ?? 0 , 0)
             
             // Return Size
-            return CGSize(width: context.containerSize.width, height: height)
+            return CGSize(width: width, height: height)
             
         case .message:
             

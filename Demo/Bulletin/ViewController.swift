@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         let dataSource = BulletinDataStore()
         
         // Register Multiple Versions
-        registerBulletingDetails(forVersion: Version("1.11"), inDataStore: dataSource)
+//        registerBulletingDetails(forVersion: Version("1.11"), inDataStore: dataSource)
 //        registerBulletingDetails(forVersion: Version("1.12"), inDataStore: dataSource)
 //        registerBulletingDetails(forVersion: Version("1.12.1"), inDataStore: dataSource)
 //        registerBulletingDetails(forVersion: Version("1.12.2"), inDataStore: dataSource)
@@ -27,18 +27,9 @@ class ViewController: UIViewController {
     
 
         let sdk = BulletinSDK(dataStore: dataSource,appearance: Appearance.whiteKnight)
-        let bulletinView = sdk.getFullBulletin()
+        let bulletinVC = sdk.getFullBulletin()
 //        let _ = sdk.getLastBulletins(limit: 5)
 //        let _ = sdk.getUnseenBulletins(limit: 4)
-        
-        if let bulletinView = bulletinView {
-            bulletinView.frame = view.bounds
-            bulletinView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-            bulletinView.translatesAutoresizingMaskIntoConstraints = true
-            bulletinView.delegate = self
-            self.view.addSubview(bulletinView)
-            bulletinView.reload(animated: false)
-        }
         
         // Get Top Most View Controller
 //        BulletinHelper.topMostViewController { (topMostVC) in
@@ -48,10 +39,18 @@ class ViewController: UIViewController {
 //                return
 //            }
 //
+//            guard let bulletinVC = bulletinVC else {
+//                return
+//            }
+//
+//            bulletinVC.delegate = self
+//
 //            // Display Self Declaration PopUp VC
-//            let segue = AlertSegue(identifier: nil, source: topMostVC, destination: bulletinView)
+//            let segue = AlertSegue(identifier: nil, source: topMostVC, destination: bulletinVC)
 //            topMostVC.prepare(for: segue, sender: nil)
 //            segue.perform()
+//
+//            bulletinVC.reload(animated: false)
 //
 //        }
     }
@@ -101,6 +100,43 @@ class ViewController: UIViewController {
         // Register Item
         dataStore.registerVersionInfo(version: version, items: bulletItems2)
     }
+    
+    @IBAction func bulletinButtonTapped(_ sender: Any) {
+        
+        // Creage DataStore Object
+        let dataSource = BulletinDataStore()
+        
+        // Register Multiple Versions
+        registerBulletingDetails(forVersion: Version("1.11"), inDataStore: dataSource)
+        registerBulletingDetails(forVersion: Version("1.12"), inDataStore: dataSource)
+        
+        let sdk = BulletinSDK(dataStore: dataSource,appearance: Appearance.whiteKnight)
+        let bulletinVC = sdk.getFullBulletin()
+        
+        // Get Top Most View Controller
+        BulletinHelper.topMostViewController { (topMostVC) in
+
+            // Validation
+            guard let topMostVC = topMostVC else {
+                return
+            }
+
+            guard let bulletinVC = bulletinVC else {
+                return
+            }
+            
+            bulletinVC.delegate = self
+
+            // Display Self Declaration PopUp VC
+            let segue = AlertSegue(identifier: nil, source: topMostVC, destination: bulletinVC)
+            topMostVC.prepare(for: segue, sender: nil)
+            segue.perform()
+
+            bulletinVC.reload(animated: false)
+
+        }
+        
+    }
 
 }
 
@@ -109,13 +145,6 @@ extension ViewController: BulletinListDelegate {
     
     func BulletinList(didClickItem item: BulletinItem) {
         
-        
-        // Set Message Type
-//        if let messasgeTypeString = attributes["messageType"] as? String,
-//           let messageType = MessageType(rawValue: messasgeTypeString) {
-//            self.messageType = messageType
-//        }
-//
         // Validation
         if let actionButtonItem = item as? ActionButton,
            let actionButtonPayload = actionButtonItem.clickPayload {

@@ -44,8 +44,7 @@ class BulletPointViewCell: BaseCollectionViewCell {
         
         // Set Background Color
         backgroundColor = AppStyle.Color.MainBgSurface_Alt
-       
-    
+
         // Set preTitle Label
         bulletTitle.large_semibold()
         bulletTitle.textColor = AppStyle.Color.MainTextPrimary

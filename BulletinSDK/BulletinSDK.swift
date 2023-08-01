@@ -24,7 +24,7 @@ class BulletinSDK   {
     
     
     // MARK: - Helper Methods
-    public func getFullBulletin() -> BulletinListView? {
+    public func getFullBulletin() -> BulletinListVC? {
         
         // Get Bulletin Items
         let items = dataStore.getData(fromNewVersion: nil, toOldVersion: nil)
@@ -33,7 +33,7 @@ class BulletinSDK   {
         return getBulletin(items: items)
     }
     
-    public func getLastBulletins(limit: Int = 1) -> BulletinListView? {
+    public func getLastBulletins(limit: Int = 1) -> BulletinListVC? {
         
         // Get Bulletin Items
         let items = dataStore.getData(fromNewVersion: nil, toOldVersion: nil, limit: limit)
@@ -42,7 +42,7 @@ class BulletinSDK   {
         return getBulletin(items: items)
     }
     
-    public func getUnseenBulletins(limit: Int? = nil) -> BulletinListView? {
+    public func getUnseenBulletins(limit: Int? = nil) -> BulletinListVC? {
         
         // Get Last Seen Version
         guard let lastSeenVersion = UserDefaults.lastSeenVersion else { return nil }
@@ -54,15 +54,15 @@ class BulletinSDK   {
         return getBulletin(items: items)
     }
     
-    private func getBulletin(items: [BulletinInfo]?) -> BulletinListView? {
+    private func getBulletin(items: [BulletinInfo]?) -> BulletinListVC? {
         
         // Validation
         guard let items = items,
               items.isEmpty == false else { return nil }
         
-        let bulletinView = BulletinListView.instance(items: items)
+        let bulletinListVC = BulletinListVC.instance(items: items)
         
-        return bulletinView
+        return bulletinListVC
     }
     
     private func applyAppearance(theme: Appearance)  {

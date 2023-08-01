@@ -1,8 +1,8 @@
 //
-//  BulletinListView.swift
+//  BulletinListVC.swift
 //  Bulletin
 //
-//  Created by Daxesh Nagar on 19/07/23.
+//  Created by Daxesh Nagar on 31/07/23.
 //  Copyright © 2023 Copyright © 2022 Zanmai Labs Private Limited. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ internal protocol BulletinListDelegate: AnyObject {
     func BulletinList(didClickItem item: BulletinItem)
 }
 
-class BulletinListView: UIViewController {
+class BulletinListVC: UIViewController {
 
     // MARK: - Variables
     @IBOutlet private var collectionView : UICollectionView!
@@ -21,6 +21,8 @@ class BulletinListView: UIViewController {
     @IBOutlet private var headerView : UIStackView!
     @IBOutlet private var footerView : UIStackView!
     @IBOutlet private var gotItButton : UIButton!
+    @IBOutlet private weak var collectionViewHeightConstraint: NSLayoutConstraint?
+    
     public weak var delegate: BulletinListDelegate?
     
     private var bulletinSection = [BulletinInfo]()
@@ -36,25 +38,20 @@ class BulletinListView: UIViewController {
 
     
     // MARK: - Initialisation Methods
-    public class func instance(items: [BulletinInfo]) -> BulletinListView {
+    public class func instance(items: [BulletinInfo]) -> BulletinListVC {
         
-        // Create Instance From XIB
-        let className = String(describing: BulletinListView.self)
-        let arrayOfViews = Bundle.main.loadNibNamed(className, owner: self, options: nil)
-        if let view = arrayOfViews?.first as? BulletinListView  {
-            
-            // Set View Flexibility
-            view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            view.translatesAutoresizingMaskIntoConstraints = true
-            view.bulletinSection = items
+        // Create Settings VC
+        let bulletinVC = BulletinListVC()
+        bulletinVC.bulletinSection = items
+        return bulletinVC
         
-            return view
-        }
+        // Create Navigation Controller
+//        let navController = WZBaseNavigationController(rootViewController: settingsVC)
         
-        // Manually Create Instance
-        let bulletinListView = BulletinListView()
-        bulletinListView.bulletinSection = items
-        return bulletinListView
+//        // Manually Create Instance
+//        let bulletinListView = BulletinListVC()
+//        bulletinListView.bulletinSection = items
+//        return bulletinListView
     }
     
     // MARK: - View Lifecycle Methods
@@ -68,7 +65,7 @@ class BulletinListView: UIViewController {
         gotItButton.layer.cornerRadius = AppStyle.ButtonCornerRadius
         
         // Set Insets
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 16, bottom: 64, right: 16)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         updateAppearance()
         
@@ -98,18 +95,41 @@ class BulletinListView: UIViewController {
     }
     
     // MARK: - Initialisation Methods
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    
-        // Add Corner Curve
-        if #available(iOS 13.0, *) {
-            layer.cornerCurve = .continuous
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
         
         // Load Variables
         loadVariables()
-        
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+            
+        // ReLayout to Forces View And Its Subviews to update immediately
+       // view.layoutIfNeeded()
+
+        // Calculate Scroll View Height
+        let minTopMargin: CGFloat = 200
+        var collectionViewHeight = collectionView.contentSize.height
+        let extraViewHeight: CGFloat = headerView.frame.height + footerView.frame.height
+        var superViewHeight: CGFloat = 480
+        if let window = UIApplication.shared.keyWindow {
+            superViewHeight = window.frame.size.height - window.safeAreaInsets.top - window.safeAreaInsets.bottom
+        }
+        if collectionViewHeight > (superViewHeight - minTopMargin - extraViewHeight) {
+            collectionViewHeight = superViewHeight - minTopMargin - extraViewHeight
+            collectionView.isScrollEnabled = true
+        } else {
+            collectionView.isScrollEnabled = false
+        }
+        
+        // Update Height
+        collectionViewHeightConstraint?.constant = collectionViewHeight
+        preferredContentSize = CGSize(width: preferredContentSize.width, height: collectionViewHeight)
+    }
+    
     
     // MARK: - Helper Method
     public func reload(animated: Bool, completion: ListUpdaterCompletion? = nil) {
@@ -119,11 +139,29 @@ class BulletinListView: UIViewController {
             self?.adapter.performUpdates(animated: animated, completion: completion)
         }
     }
+    
+//    private func calculateTotalContentHeight() -> CGFloat {
+//          var totalHeight: CGFloat = 0
+//          let collectionViewContentHeight = collectionView.contentSize.height
+//
+//
+//        let minTopMargin: CGFloat = 50
+//        var viewHeight = collectionView.contentSize.height
+//        let extraViewHeight: CGFloat = 86 + 45
+//        var superViewHeight: CGFloat = 480
+//          // Optionally, add space for any additional header or footer views if present.
+//           totalHeight += additionalHeaderHeight + additionalFooterHeight
+//
+//          // Optionally, add some extra space for padding, if needed.
+//          // totalHeight += paddingHeight
+//
+//          return totalHeight
+//      }
 
 }
 
 // MARK: - ListAdapterDataSource
-extension BulletinListView: ListAdapterDataSource {
+extension BulletinListVC: ListAdapterDataSource {
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         return bulletinItems
@@ -139,12 +177,12 @@ extension BulletinListView: ListAdapterDataSource {
 }
 
 // MARK: - UICollectionViewDelegate
-extension BulletinListView: UICollectionViewDelegate {
+extension BulletinListVC: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
 }
 
 // MARK: - BulletinSectionControllerDelegate
-extension BulletinListView: BulletinSectionControllerDelegate {
+extension BulletinListVC: BulletinSectionControllerDelegate {
     func bulletinSectionController(_ sectionController: BulletinListSectionController, didClickItem item: BulletinItem) {
         
         // Clicked Item

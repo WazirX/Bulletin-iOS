@@ -16,7 +16,7 @@ protocol MediaViewCellDelegate: AnyObject {
 class MediaViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
-  //  @IBOutlet private weak var cardViewContainer: UIView!
+    @IBOutlet private weak var containerStackView: UIStackView!
     @IBOutlet private weak var mediaImageView: UIImageView!
     @IBOutlet private weak var imageViewHeightConstraint: NSLayoutConstraint!
     
@@ -44,13 +44,13 @@ class MediaViewCell: BaseCollectionViewCell {
         super.layoutSubviews()
         
         // Setting Frame Of Inside Container SubView Of Cell
-//        if let item = item,
-//           let itemSize = item.size {
-//            let height : CGFloat = (contentView.frame.width * itemSize.height) / itemSize.width
-//            imageViewHeightConstraint.constant = height
-//        } else {
-//            imageViewHeightConstraint.constant = 135
-//        }
+        if let item = item,
+           let itemSize = item.size {
+            let height : CGFloat = ((contentView.frame.width - containerStackView.layoutMargins.left - containerStackView.layoutMargins.right) * itemSize.height) / itemSize.width
+            imageViewHeightConstraint.constant = height
+        } else {
+            imageViewHeightConstraint.constant = 135
+        }
     }
 
     //MARK: - Helper Methods
@@ -86,13 +86,13 @@ class MediaViewCell: BaseCollectionViewCell {
             mediaImageView.isHidden = true
         }
         
-        // Setting Frame Of Inside Container SubView Of Cell
-        if let itemSize = mediaItem.size {
-            let height : CGFloat = (frame.width * itemSize.height) / itemSize.width
-            imageViewHeightConstraint.constant = height
-        } else {
-            imageViewHeightConstraint.constant = 135
-        }
+//        // Setting Frame Of Inside Container SubView Of Cell
+//        if let itemSize = mediaItem.size {
+//            let height : CGFloat = (frame.width * itemSize.height) / itemSize.width
+//            imageViewHeightConstraint.constant = height
+//        } else {
+//            imageViewHeightConstraint.constant = 135
+//        }
        
         // Layout Cell
         layoutIfNeeded()
@@ -103,8 +103,7 @@ class MediaViewCell: BaseCollectionViewCell {
         super.updateAppearance()
         
         // Set Background Color
-        backgroundColor = AppStyle.Color.SuccessTextPrimary
-      //  cardViewContainer.backgroundColor = AppStyle.Color.DangerTextPrimary
+        backgroundColor = AppStyle.Color.MainBgSurface_Alt
     }
     
 }

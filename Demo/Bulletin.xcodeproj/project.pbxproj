@@ -19,8 +19,6 @@
 		7315D85A2A69703700B7CE4F /* TitleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7315D8582A69703700B7CE4F /* TitleViewCell.xib */; };
 		732D1C2E2A66BAEA00FB5BFE /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732D1C2D2A66BAEA00FB5BFE /* LocalizationHelper.swift */; };
 		732D1C312A66C6F500FB5BFE /* UILabel+FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732D1C302A66C6F500FB5BFE /* UILabel+FontStyle.swift */; };
-		738B01EC2A67BCEE00CFDB09 /* BulletinListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B01EB2A67BCEE00CFDB09 /* BulletinListView.swift */; };
-		738B01EE2A67BCFB00CFDB09 /* BulletinListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 738B01ED2A67BCFB00CFDB09 /* BulletinListView.xib */; };
 		738B01F02A6819C900CFDB09 /* BulletinListSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B01EF2A6819C900CFDB09 /* BulletinListSectionController.swift */; };
 		73B17D602A6649240085EB1A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B17D5D2A6649240085EB1A /* Constants.swift */; };
 		73B17D612A6649240085EB1A /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B17D5E2A6649240085EB1A /* Text.swift */; };
@@ -28,6 +26,8 @@
 		73CC10192A650D1600BB08C5 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CC10182A650D1600BB08C5 /* BaseCollectionViewCell.swift */; };
 		73D8C8412A715A6400652504 /* String+Unicode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D8C8402A715A6400652504 /* String+Unicode.swift */; };
 		73D8C8432A7164C700652504 /* UIView+SubviewAspectSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D8C8422A7164C700652504 /* UIView+SubviewAspectSize.swift */; };
+		73E28D922A77E0DE002F73B3 /* BulletinListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E28D902A77E0DE002F73B3 /* BulletinListVC.swift */; };
+		73E28D932A77E0DE002F73B3 /* BulletinListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73E28D912A77E0DE002F73B3 /* BulletinListVC.xib */; };
 		73E824F92A6A4F72007AA8D7 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E824F82A6A4F72007AA8D7 /* String+HTML.swift */; };
 		73E824FB2A6A51AD007AA8D7 /* NSAttributedString+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E824FA2A6A51AD007AA8D7 /* NSAttributedString+Utility.swift */; };
 		73E824FF2A6A67F5007AA8D7 /* PushButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E824FE2A6A67F5007AA8D7 /* PushButton.swift */; };
@@ -76,8 +76,6 @@
 		7315D8582A69703700B7CE4F /* TitleViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleViewCell.xib; sourceTree = "<group>"; };
 		732D1C2D2A66BAEA00FB5BFE /* LocalizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
 		732D1C302A66C6F500FB5BFE /* UILabel+FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+FontStyle.swift"; sourceTree = "<group>"; };
-		738B01EB2A67BCEE00CFDB09 /* BulletinListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinListView.swift; sourceTree = "<group>"; };
-		738B01ED2A67BCFB00CFDB09 /* BulletinListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulletinListView.xib; sourceTree = "<group>"; };
 		738B01EF2A6819C900CFDB09 /* BulletinListSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinListSectionController.swift; sourceTree = "<group>"; };
 		73B17D5D2A6649240085EB1A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		73B17D5E2A6649240085EB1A /* Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
@@ -85,6 +83,8 @@
 		73CC10182A650D1600BB08C5 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		73D8C8402A715A6400652504 /* String+Unicode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Unicode.swift"; sourceTree = "<group>"; };
 		73D8C8422A7164C700652504 /* UIView+SubviewAspectSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SubviewAspectSize.swift"; sourceTree = "<group>"; };
+		73E28D902A77E0DE002F73B3 /* BulletinListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinListVC.swift; sourceTree = "<group>"; };
+		73E28D912A77E0DE002F73B3 /* BulletinListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulletinListVC.xib; sourceTree = "<group>"; };
 		73E824F82A6A4F72007AA8D7 /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 		73E824FA2A6A51AD007AA8D7 /* NSAttributedString+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Utility.swift"; sourceTree = "<group>"; };
 		73E824FE2A6A67F5007AA8D7 /* PushButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushButton.swift; sourceTree = "<group>"; };
@@ -211,8 +211,8 @@
 		732FF0E32A67A2F800904913 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				738B01EB2A67BCEE00CFDB09 /* BulletinListView.swift */,
-				738B01ED2A67BCFB00CFDB09 /* BulletinListView.xib */,
+				73E28D902A77E0DE002F73B3 /* BulletinListVC.swift */,
+				73E28D912A77E0DE002F73B3 /* BulletinListVC.xib */,
 				738B01EF2A6819C900CFDB09 /* BulletinListSectionController.swift */,
 			);
 			path = Controllers;
@@ -483,8 +483,8 @@
 				7315D85A2A69703700B7CE4F /* TitleViewCell.xib in Resources */,
 				73F62F882A6E90B1007CBC36 /* IBMPlexSans-Regular.ttf in Resources */,
 				7315D8562A696FE400B7CE4F /* MediaViewCell.xib in Resources */,
+				73E28D932A77E0DE002F73B3 /* BulletinListVC.xib in Resources */,
 				73F62F8B2A6E90B1007CBC36 /* IBMPlexSans-Medium.ttf in Resources */,
-				738B01EE2A67BCFB00CFDB09 /* BulletinListView.xib in Resources */,
 				815E3D8528DC85510042CEA5 /* LaunchScreen.storyboard in Resources */,
 				815E3D8228DC85510042CEA5 /* Assets.xcassets in Resources */,
 				815E3D8028DC85510042CEA5 /* Main.storyboard in Resources */,
@@ -554,7 +554,6 @@
 				732D1C312A66C6F500FB5BFE /* UILabel+FontStyle.swift in Sources */,
 				73E824FF2A6A67F5007AA8D7 /* PushButton.swift in Sources */,
 				73B17D622A6649240085EB1A /* Appearance.swift in Sources */,
-				738B01EC2A67BCEE00CFDB09 /* BulletinListView.swift in Sources */,
 				815E3D7D28DC85510042CEA5 /* ViewController.swift in Sources */,
 				7315D8512A696FA100B7CE4F /* MessageViewCell.swift in Sources */,
 				73CC10192A650D1600BB08C5 /* BaseCollectionViewCell.swift in Sources */,
@@ -562,6 +561,7 @@
 				7315D84D2A696F4300B7CE4F /* ActionButtonViewCell.swift in Sources */,
 				815E3DB428DC884C0042CEA5 /* BulletinItem.swift in Sources */,
 				81E010E228DDA2D9003FFE79 /* UserDefaults+Storage.swift in Sources */,
+				73E28D922A77E0DE002F73B3 /* BulletinListVC.swift in Sources */,
 				815E3DB328DC884C0042CEA5 /* BulletinDataStore.swift in Sources */,
 				815E3DBB28DC884C0042CEA5 /* BulletinSDK.swift in Sources */,
 				819772DE28E40B8100962913 /* Version.swift in Sources */,
