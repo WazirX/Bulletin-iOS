@@ -67,7 +67,7 @@ class MessageViewCell: BaseCollectionViewCell {
             // Set Html Description Message
             if let descMessage = messageItem.text,
                descMessage.isEmpty == false,
-             let htmlAttributedString = descMessage.html2AttributedString(usingFont: nil, color: AppStyle.Color.SecondaryText)?.trailingNewlineChopped
+             let htmlAttributedString = descMessage.html2AttributedString(usingFont: AppStyle.Font.Medium(size: 12), color: AppStyle.Color.MainTextPrimary)?.trailingNewlineChopped
             {
                 descMsgLabel.attributedText = htmlAttributedString
                 descMsgLabel.isHidden = false

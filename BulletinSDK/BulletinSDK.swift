@@ -26,7 +26,7 @@ class BulletinSDK   {
     // MARK: - Helper Methods
     public func getFullBulletin() -> BulletinListVC? {
         
-        // Get Bulletin Items
+        // Get   Bulletin Items
         let items = dataStore.getData(fromNewVersion: nil, toOldVersion: nil)
         
         // Show Bulletin

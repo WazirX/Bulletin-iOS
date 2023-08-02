@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 //        registerBulletingDetails(forVersion: Version("1.14"), inDataStore: dataSource)
     
 
-        let sdk = BulletinSDK(dataStore: dataSource,appearance: Appearance.whiteKnight)
+        let sdk = BulletinSDK(dataStore: dataSource,appearance: Appearance.darkKnight)
         let bulletinVC = sdk.getFullBulletin()
 //        let _ = sdk.getLastBulletins(limit: 5)
 //        let _ = sdk.getUnseenBulletins(limit: 4)
@@ -69,10 +69,10 @@ class ViewController: UIViewController {
         title2.subTitleText = "Vestibulum id ligula porta felis euismod semper. Vesti bu lum id ligula porta felis euismod semper."
         
         let message2 = Message()
-        message2.messageType = .html
-        message2.text = "<header><h1>Harry Potter's House</h1><p>Privet Drive,4<br>Little Whinging<br>Surrey<br>England<br>Great Britain</p></header>"
+        message2.messageType = .text
+     //   message2.text = "<header><h1>Harry Potter's House</h1><p>Privet Drive,4<br>Little Whinging<br>Surrey<br>England<br>Great Britain</p></header>"
         //"<header>\n" + "<h1>Harry Potter's House</h1>\n" + "<p class=\"address\">\n" + "Privet Drive, 4<br>Little Whinging<br>Surrey<br>England<br>Great Britain\n" + "</p>\n" + "</header>"
-    //    message2.text = "Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros."
+        message2.text = "Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros."
         
         let media = Media()
         media.size = CGSize(width: 1180, height: 596)
@@ -109,9 +109,9 @@ class ViewController: UIViewController {
         
         // Register Multiple Versions
         registerBulletingDetails(forVersion: Version("1.11"), inDataStore: dataSource)
-   //     registerBulletingDetails(forVersion: Version("1.12"), inDataStore: dataSource)
+        registerBulletingDetails(forVersion: Version("1.12"), inDataStore: dataSource)
         
-        let sdk = BulletinSDK(dataStore: dataSource,appearance: Appearance.whiteKnight)
+        let sdk = BulletinSDK(dataStore: dataSource,appearance: Appearance.darkKnight)
         let bulletinVC = sdk.getFullBulletin()
         
         // Get Top Most View Controller

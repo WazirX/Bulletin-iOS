@@ -131,7 +131,7 @@ class BulletinListVC: UIViewController {
                 let contentHeight = min(collectionViewHeight, superViewHeight)
                 weakSelf.collectionViewHeightConstraint?.constant = contentHeight
                 weakSelf.view.setNeedsLayout()
-                weakSelf.preferredContentSize = CGSize(width: weakSelf.preferredContentSize.width, height: contentHeight)
+                weakSelf.preferredContentSize = CGSize(width: weakSelf.preferredContentSize.width, height: superViewHeight - 40)
                 completion?(finished)
             })
         }
