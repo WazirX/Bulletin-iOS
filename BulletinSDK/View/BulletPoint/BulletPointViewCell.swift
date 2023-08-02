@@ -52,12 +52,14 @@ class BulletPointViewCell: BaseCollectionViewCell {
         // Set Title Label
         bulletDesc.base_regular()
         bulletDesc.textColor = AppStyle.Color.MainTextSecondary
-        
-      //  bulletName.heading4_semibold()
     }
     
     //MARK: - Helper Methods
     private func updateUI() {
+        
+        // Reset To Nil
+        bulletImageView.kf.cancelDownloadTask()
+        bulletImageView.image = nil
         
         // Validation
         guard let bulletPointItem = item else {
@@ -89,10 +91,11 @@ class BulletPointViewCell: BaseCollectionViewCell {
                     case .success(let value):
                         
                         // Image downloaded
-                        if let sourceUrl = value.source.url,
+                        if let weakSelf = self,
+                           let sourceUrl = value.source.url,
                            sourceUrl == iconUrl {
-                            self?.bulletImageView.isHidden = true
-                            self?.bulletImageView.image = value.image
+                            weakSelf.bulletImageView.image = value.image
+                            weakSelf.bulletImageView.isHidden = false
                         }
                     case .failure(let error):
                         print("\(error.localizedDescription)")

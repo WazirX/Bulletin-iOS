@@ -19,13 +19,7 @@ public enum Appearance: String  {
     // MARK: Constants
     public static func DefaultAnimationDuration() -> TimeInterval { return 0.3 }
     
-//    public static func Current() -> Appearance {
-//        return UserDefaults.lastSelectedAppearance() ?? .darkKnight
-//    }
-    
 
-    
-    
     // MARK: Conveniance Method To Apply Any Appearance
     public func apply(shouldBroadcastUpdate: Bool)  {
         
@@ -36,24 +30,7 @@ public enum Appearance: String  {
         case .whiteKnight:
             applyDefaultAppearance()
         }
-        
-        
-//        // Update UISwitch Appearance
-//        UISwitch.appearance().onTintColor = AppStyle.Color.SwitchOn
-//
-//        // Update UITextField Appearance
-//        UITextField.appearance().keyboardAppearance = AppStyle.KeyboardAppearance
-//        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Color.PrimaryText]
-//        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = AppStyle.Color.SelectedElement
-//
-//        // Update UIRefreshControl Appearance
-//        UIRefreshControl.appearance().tintColor = AppStyle.Color.Loader
-//
-//        // Update UIToolBar Appearance
-//        UIToolbar.appearance().tintColor = AppStyle.Color.SelectedElement
-//        UIToolbar.appearance().barTintColor = AppStyle.Color.Background
 
-        
         // Broadcast Appearance Update Notification
         if shouldBroadcastUpdate == true   {
             NotificationCenter.default.post(name: .AppearanceDidUpdate, object: nil, userInfo: nil)

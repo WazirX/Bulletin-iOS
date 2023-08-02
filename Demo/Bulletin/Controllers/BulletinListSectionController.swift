@@ -15,7 +15,7 @@ internal protocol BulletinSectionControllerDelegate: AnyObject {
 }
 
 class BulletinListSectionController: ListSectionController {
-  
+    
     // MARK: - Variable
     private var bulletinListSection: BulletinInfo?
     public weak var delegate: BulletinSectionControllerDelegate?
@@ -97,16 +97,6 @@ class BulletinListSectionController: ListSectionController {
             
             return size
             
-//            // Set Cell Item
-//            mediaViewCell?.frame = CGRect(x: 0.0, y: 0.0, width: context.containerSize.width, height: CGFloat.greatestFiniteMagnitude)
-//            mediaViewCell?.item = item as? Media
-//
-//            // Calculate Height
-//            let height = max(mediaViewCell?.intrinsicContentSize.height ?? 0 , 0)
-            
-            // Return Size
-//            return CGSize(width: context.containerSize.width , height: height)
-            
         case .bulletPoint:
             
             // Set Cell Item
@@ -156,7 +146,7 @@ class BulletinListSectionController: ListSectionController {
             
             // Item Validation
             if let item = item as? Title {
-
+                
                 // Set Item
                 cell.item = item
             }
@@ -176,13 +166,10 @@ class BulletinListSectionController: ListSectionController {
             
             // Item Validation
             if let item = item as? Message {
-
+                
                 // Set Item
                 cell.item = item
             }
-            
-            // Set Delegate
-         //   cell.delegate = self
             
             return cell
             
@@ -195,7 +182,7 @@ class BulletinListSectionController: ListSectionController {
             
             // Item Validation
             if let item = item as? Media {
-
+                
                 // Set Item
                 cell.item = item
             }
@@ -214,7 +201,7 @@ class BulletinListSectionController: ListSectionController {
             
             // Item Validation
             if let item = item as? BulletPoint {
-
+                
                 // Set Item
                 cell.item = item
             }
@@ -233,7 +220,7 @@ class BulletinListSectionController: ListSectionController {
             
             // Item Validation
             if let item = item as? ActionButton {
-
+                
                 // Set Item
                 cell.item = item
             }
@@ -257,7 +244,7 @@ class BulletinListSectionController: ListSectionController {
 
 // MARK: - BulletListTitleCellDelegate
 extension BulletinListSectionController: TitleViewCellDelegate {
-   
+    
     func titleViewCell(_ cell: TitleViewCell, ofItem item: BulletinItem) {
         
     }
@@ -266,7 +253,7 @@ extension BulletinListSectionController: TitleViewCellDelegate {
 
 // MARK: - BulletListTitleCellDelegate
 extension BulletinListSectionController: MediaViewCellDelegate {
-   
+    
     func mediaViewCell(_ cell: MediaViewCell, ofItem item: BulletinItem) {
         
     }
@@ -276,7 +263,7 @@ extension BulletinListSectionController: MediaViewCellDelegate {
 
 // MARK: - BulletListTitleCellDelegate
 extension BulletinListSectionController: MessageViewCellDelegate {
-   
+    
     func messageViewCell(_ cell: MessageViewCell, ofItem item: BulletinItem) {
         
     }
@@ -285,7 +272,7 @@ extension BulletinListSectionController: MessageViewCellDelegate {
 
 // MARK: - BulletListTitleCellDelegate
 extension BulletinListSectionController: ActionButtonViewCellDelegate {
-   
+    
     func actionButtonViewCell(_ cell: ActionButtonViewCell, ofItem item: BulletinItem) {
         delegate?.bulletinSectionController(self, didClickItem: item)
     }
@@ -294,7 +281,7 @@ extension BulletinListSectionController: ActionButtonViewCellDelegate {
 
 // MARK: - BulletListTitleCellDelegate
 extension BulletinListSectionController: BulletPointViewCellDelegate {
-   
+    
     func bulletPointViewCell(_ cell: BulletPointViewCell, ofItem item: BulletinItem) {
         delegate?.bulletinSectionController(self, didClickItem: item)
     }

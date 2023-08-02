@@ -86,14 +86,6 @@ class MediaViewCell: BaseCollectionViewCell {
             mediaImageView.isHidden = true
         }
         
-//        // Setting Frame Of Inside Container SubView Of Cell
-//        if let itemSize = mediaItem.size {
-//            let height : CGFloat = (frame.width * itemSize.height) / itemSize.width
-//            imageViewHeightConstraint.constant = height
-//        } else {
-//            imageViewHeightConstraint.constant = 135
-//        }
-       
         // Layout Cell
         layoutIfNeeded()
     
