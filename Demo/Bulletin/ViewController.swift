@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftMessages
 
 class ViewController: UIViewController {
 
@@ -42,7 +43,7 @@ class ViewController: UIViewController {
 //            guard let bulletinVC = bulletinVC else {
 //                return
 //            }
-//
+//            
 //            bulletinVC.delegate = self
 //
 //            // Display Self Declaration PopUp VC
@@ -108,7 +109,7 @@ class ViewController: UIViewController {
         
         // Register Multiple Versions
         registerBulletingDetails(forVersion: Version("1.11"), inDataStore: dataSource)
-        registerBulletingDetails(forVersion: Version("1.12"), inDataStore: dataSource)
+   //     registerBulletingDetails(forVersion: Version("1.12"), inDataStore: dataSource)
         
         let sdk = BulletinSDK(dataStore: dataSource,appearance: Appearance.whiteKnight)
         let bulletinVC = sdk.getFullBulletin()
@@ -126,18 +127,18 @@ class ViewController: UIViewController {
             }
             
             bulletinVC.delegate = self
-
-            // Display Self Declaration PopUp VC
-            let segue = AlertSegue(identifier: nil, source: topMostVC, destination: bulletinVC)
-            topMostVC.prepare(for: segue, sender: nil)
-            segue.perform()
-
-            bulletinVC.reload(animated: false)
-
+            
+            bulletinVC.loadViewIfNeeded()
+            bulletinVC.reload(animated: false,completion: {_ in
+                // Display Bulletin PopUp VC
+                let segue = AlertSegue(identifier: nil, source: topMostVC, destination: bulletinVC)
+                topMostVC.prepare(for: segue, sender: nil)
+                segue.perform()
+            })
         }
         
     }
-
+    
 }
 
 //// MARK: - WZSettingsSectionControllerDelegate

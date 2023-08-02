@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="vuF-dW-s6m">
-                        <rect key="frame" x="0.0" y="59" width="399" height="86"/>
+                        <rect key="frame" x="0.0" y="0.0" width="399" height="179"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4l5-BZ-t4P">
-                                <rect key="frame" x="16" y="0.0" width="366" height="86"/>
+                                <rect key="frame" x="16" y="59" width="366" height="86"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -31,12 +31,12 @@
                     </stackView>
                 </subviews>
             </view>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <viewLayoutGuide key="safeArea" id="Jgn-OK-5sX"/>
             <constraints>
-                <constraint firstItem="vuF-dW-s6m" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="e3y-lG-UcH"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="vuF-dW-s6m" secondAttribute="top" id="eVI-Cn-ll9"/>
-                <constraint firstItem="vuF-dW-s6m" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" id="k9V-cI-KYa"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="vuF-dW-s6m" secondAttribute="trailing" id="lFP-Jz-x6c"/>
+                <constraint firstItem="vuF-dW-s6m" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="e3y-lG-UcH"/>
+                <constraint firstAttribute="top" secondItem="vuF-dW-s6m" secondAttribute="top" id="eVI-Cn-ll9"/>
+                <constraint firstItem="vuF-dW-s6m" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottom" id="k9V-cI-KYa"/>
+                <constraint firstAttribute="trailing" secondItem="vuF-dW-s6m" secondAttribute="trailing" id="lFP-Jz-x6c"/>
             </constraints>
             <size key="customSize" width="399" height="179"/>
             <connections>

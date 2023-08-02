@@ -18,7 +18,7 @@ class BulletinListVC: UIViewController {
     // MARK: - Variables
     @IBOutlet private var collectionView : UICollectionView!
     @IBOutlet private var headerTitleLabel : UILabel!
-    @IBOutlet private var headerView : UIStackView!
+    @IBOutlet private var headerView : UIView!
     @IBOutlet private var footerView : UIStackView!
     @IBOutlet private var gotItButton : UIButton!
     @IBOutlet private weak var collectionViewHeightConstraint: NSLayoutConstraint?
@@ -40,18 +40,10 @@ class BulletinListVC: UIViewController {
     // MARK: - Initialisation Methods
     public class func instance(items: [BulletinInfo]) -> BulletinListVC {
         
-        // Create Settings VC
+        // Create Bulletin VC
         let bulletinVC = BulletinListVC()
         bulletinVC.bulletinSection = items
         return bulletinVC
-        
-        // Create Navigation Controller
-//        let navController = WZBaseNavigationController(rootViewController: settingsVC)
-        
-//        // Manually Create Instance
-//        let bulletinListView = BulletinListVC()
-//        bulletinListView.bulletinSection = items
-//        return bulletinListView
     }
     
     // MARK: - View Lifecycle Methods
@@ -65,7 +57,7 @@ class BulletinListVC: UIViewController {
         gotItButton.layer.cornerRadius = AppStyle.ButtonCornerRadius
         
         // Set Insets
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         
         updateAppearance()
         
@@ -106,28 +98,8 @@ class BulletinListVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-            
-        // ReLayout to Forces View And Its Subviews to update immediately
-       // view.layoutIfNeeded()
-
-        // Calculate Scroll View Height
-        let minTopMargin: CGFloat = 200
-        var collectionViewHeight = collectionView.contentSize.height
-        let extraViewHeight: CGFloat = headerView.frame.height + footerView.frame.height
-        var superViewHeight: CGFloat = 480
-        if let window = UIApplication.shared.keyWindow {
-            superViewHeight = window.frame.size.height - window.safeAreaInsets.top - window.safeAreaInsets.bottom
-        }
-        if collectionViewHeight > (superViewHeight - minTopMargin - extraViewHeight) {
-            collectionViewHeight = superViewHeight - minTopMargin - extraViewHeight
-            collectionView.isScrollEnabled = true
-        } else {
-            collectionView.isScrollEnabled = false
-        }
         
-        // Update Height
-        collectionViewHeightConstraint?.constant = collectionViewHeight
-        preferredContentSize = CGSize(width: preferredContentSize.width, height: collectionViewHeight)
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     
@@ -135,29 +107,36 @@ class BulletinListVC: UIViewController {
     public func reload(animated: Bool, completion: ListUpdaterCompletion? = nil) {
         
         DispatchQueue.main.async { [weak self] in
+            guard let weakSelf = self else { return }
+            
             // Perform Updates
-            self?.adapter.performUpdates(animated: animated, completion: completion)
+            weakSelf.adapter.performUpdates(animated: animated, completion: {(finished) in
+                
+                // ReLayout to Forces View And Its Subviews to update immediately
+                weakSelf.view.layoutIfNeeded()
+                var superViewHeight: CGFloat = 480
+                let minTopMargin: CGFloat = 50
+                var collectionViewHeight = weakSelf.collectionView.contentSize.height
+                let extraViewHeight: CGFloat = weakSelf.headerView.frame.height + weakSelf.footerView.frame.height
+                if let window = UIApplication.shared.keyWindow {
+                    superViewHeight = window.frame.size.height - window.safeAreaInsets.top - window.safeAreaInsets.bottom
+                }
+                if collectionViewHeight > (superViewHeight - minTopMargin - extraViewHeight) {
+                    collectionViewHeight = superViewHeight - minTopMargin - extraViewHeight
+                    weakSelf.collectionView.isScrollEnabled = true
+                } else {
+                    weakSelf.collectionView.isScrollEnabled = false
+                }
+                
+                let contentHeight = min(collectionViewHeight, superViewHeight)
+                weakSelf.collectionViewHeightConstraint?.constant = contentHeight
+                weakSelf.view.setNeedsLayout()
+                weakSelf.preferredContentSize = CGSize(width: weakSelf.preferredContentSize.width, height: contentHeight)
+                completion?(finished)
+            })
         }
     }
     
-//    private func calculateTotalContentHeight() -> CGFloat {
-//          var totalHeight: CGFloat = 0
-//          let collectionViewContentHeight = collectionView.contentSize.height
-//
-//
-//        let minTopMargin: CGFloat = 50
-//        var viewHeight = collectionView.contentSize.height
-//        let extraViewHeight: CGFloat = 86 + 45
-//        var superViewHeight: CGFloat = 480
-//          // Optionally, add space for any additional header or footer views if present.
-//           totalHeight += additionalHeaderHeight + additionalFooterHeight
-//
-//          // Optionally, add some extra space for padding, if needed.
-//          // totalHeight += paddingHeight
-//
-//          return totalHeight
-//      }
-
 }
 
 // MARK: - ListAdapterDataSource
